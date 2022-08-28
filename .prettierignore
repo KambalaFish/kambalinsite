@@ -1,0 +1,37 @@
+# don't ever lint node_modules
+**/node_modules/*
+# don't lint build output (make sure it's set to your correct build folder name)
+dist
+# don't lint nyc coverage output
+coverage
+**/.next/*
+*.json
+*.lock
+*.css
+*.scss
+**/out/*
+next-env.d.ts
+# next.config.js
+
+.gitignore
+**/.git
+
+next.config.js
+.babelrc
+.prettierrc
+.eslintrc
+.browserlistrc
+*.md
+
+# webstorm files
+.idea
+
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+
+# production
+/build

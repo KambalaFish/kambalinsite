@@ -103,7 +103,7 @@ const Home: NextPage = () => {
           <Text>Сейчас я открыт для вакансий. Вы можете связаться со мной:</Text>
           <Grid
             gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)']}
-            gridColumnGap={'1.5rem'}
+            gridColumnGap={['0', '0', '1.25rem']}
             gridRowGap={['0.5rem', '0.5rem', '0']}
             justifyItems={'stretch'}
           >

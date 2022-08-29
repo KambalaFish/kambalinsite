@@ -31,8 +31,8 @@ const Layout: React.FC<{ children?: React.ReactNode; themeToggler: React.ReactEl
         <Container
           as={'main'}
           maxWidth={'100%'}
-          m={'3rem auto'}
-          // border={'0.0625rem solid red'}
+          my={'3rem'}
+          mx={['auto', 'calc(1ch + 2*0.625rem + 2ch)', 'auto']}
           alignContent={'center'}
         >
           {children}

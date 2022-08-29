@@ -21,7 +21,6 @@ const Home: NextPage = () => {
       </Head>
       <Container
         maxWidth={'750px'}
-        mx={['0', 'calc(1ch + 2*0.625rem + 2ch)', '0']}
         css={`
           row-gap: 4rem;
         `}
@@ -78,7 +77,6 @@ const Home: NextPage = () => {
               'repeat(3, 1fr)',
               'repeat(2, 1fr)',
             ]}
-            // gridColumnGap={'1.5rem'}
             gridColumnGap={'4rem'}
             gridRowGap={'2rem'}
             pt={'1rem'}

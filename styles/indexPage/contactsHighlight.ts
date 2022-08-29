@@ -38,6 +38,7 @@ const contactsHighlight: FlattenInterpolation<ThemeProps<DefaultTheme>> = css`
       transform: scale3d(1, 1, 1);
     }
   }
+  padding: 0 1.5rem 1.5rem;
   animation: makeOpaque ease-in-out 0.8s both, tada ease-in-out 1.6s;
   border-radius: 3rem;
   ${minDeviceMedia.tablet} {

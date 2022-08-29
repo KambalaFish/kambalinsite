@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     устранение сдвига из-за появления скролбара
   */
   
-  ${minDeviceMedia.tablet}{
+  ${minDeviceMedia.mobile}{
     html {
       margin: 0 calc(100% - 100vw) 0 0;
     }

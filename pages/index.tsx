@@ -90,17 +90,13 @@ const Home: NextPage = () => {
           </Grid>
         </Container>
 
-        <Container
-          id={'contacts'}
-          css={styleForContactsActiveAnchor}
-          pb={'1rem'}
-          px={'1rem'}
-          mx={'1rem'}
-        >
-          <Title as={'h2'} fontSize={'3rem'}>
+        <Container id={'contacts'} css={styleForContactsActiveAnchor}>
+          <Title as={'h2'} fontSize={'3rem'} width={['9ch', 'auto']}>
             Для связи со мной
           </Title>
-          <Text>Сейчас я открыт для вакансий. Вы можете связаться со мной:</Text>
+          <Text width={['29ch', 'auto']}>
+            Сейчас я открыт для вакансий. Вы можете связаться со мной:
+          </Text>
           <Grid
             gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)']}
             gridColumnGap={['0', '0', '1.25rem']}

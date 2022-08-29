@@ -7,9 +7,11 @@ import {
   FontWeightProps,
   color,
   ColorProps,
+  layout,
+  LayoutProps,
 } from 'styled-system';
 
-type TitleProps = FontSizeProps & ColorProps & FontWeightProps;
+type TitleProps = FontSizeProps & ColorProps & FontWeightProps & LayoutProps;
 
 const Title = styled.h1<TitleProps>`
   margin: 1rem 0;
@@ -22,6 +24,6 @@ const Title = styled.h1<TitleProps>`
     background-color: ${({ theme }) => theme.title.selection.color};
   }
 
-  ${compose(fontSize, color, fontWeight)}
+  ${compose(fontSize, color, fontWeight, layout)}
 `;
 export default Title;

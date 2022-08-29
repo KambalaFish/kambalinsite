@@ -38,12 +38,16 @@ const contactsHighlight: FlattenInterpolation<ThemeProps<DefaultTheme>> = css`
       transform: scale3d(1, 1, 1);
     }
   }
+  ${minDeviceMedia.mobile} {
+    width: 90%;
+  }
+  ${minDeviceMedia.tablet} {
+    border-radius: 2.5rem/1.5rem;
+    width: 100%;
+  }
   padding: 0 1.5rem 1.5rem;
   animation: makeOpaque ease-in-out 0.8s both, tada ease-in-out 1.6s;
   border-radius: 3rem;
-  ${minDeviceMedia.tablet} {
-    border-radius: 2.5rem/1.5rem;
-  }
   background-color: ${({ theme }) => theme.contactsHighlight.backgroundColor};
   box-shadow: 0 0 4rem ${({ theme }) => theme.contactsHighlight.boxShadow.spreadRadius}
       ${({ theme }) => theme.contactsHighlight.boxShadow.color},

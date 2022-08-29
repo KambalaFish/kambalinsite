@@ -9,4 +9,4 @@ export { default as AnimatedEmoji } from './AnimatedEmoji';
 export { PrimaryButton, SecondaryButton } from './Button';
 export { default as ThemeToggle } from './ThemeToggle';
 export { Pagination } from './Pagination';
-export { Burger } from './Burger';
+export { Burger } from './NavigationBar/Burger';

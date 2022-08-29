@@ -5,9 +5,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { minDeviceMedia } from '@styles/theme';
 
-type ThemeTogglerProps = {
+type ThemeToggleProps = {
   themeMode: ThemeMode;
-  themeToggler: () => void;
+  themeToggle: () => void;
 };
 
 const StyledSun = styled(IoIosSunny)`
@@ -19,6 +19,7 @@ const StyledSun = styled(IoIosSunny)`
 const TooltipWrap = styled.span<{ content: string }>`
   position: relative;
   :hover::after {
+    display: none;
     content: '${(props) => props.content}';
     position: absolute;
     font-size: 0.8rem;
@@ -31,6 +32,7 @@ const TooltipWrap = styled.span<{ content: string }>`
   }
   ${minDeviceMedia.mobile} {
     :hover::after {
+      display: inline;
       top: calc(2rem / 2 - (1.2 * 0.8rem + 0.3rem) / 2);
       right: 3rem;
     }
@@ -49,16 +51,16 @@ const StyledMoon = styled(IoMdMoon)`
   margin-top: calc((2.375rem - 2rem) / 2);
 `;
 
-const ThemeToggler = ({ themeMode, themeToggler }: ThemeTogglerProps): React.ReactElement => {
+const ThemeToggle = ({ themeMode, themeToggle }: ThemeToggleProps): React.ReactElement => {
   return themeMode === ThemeMode.dark ? (
     <TooltipWrap content={'на светлую'}>
-      <StyledSun size={'2em'} onClick={themeToggler} />
+      <StyledSun size={'2em'} onClick={themeToggle} />
     </TooltipWrap>
   ) : (
     <TooltipWrap content={'на тёмную'}>
-      <StyledMoon size={'2em'} onClick={themeToggler} />
+      <StyledMoon size={'2em'} onClick={themeToggle} />
     </TooltipWrap>
   );
 };
 
-export default ThemeToggler;
+export default ThemeToggle;

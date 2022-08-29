@@ -2,10 +2,15 @@ import React from 'react';
 import Head from 'next/head';
 import { Container, NavigationBar, Footer } from '@components';
 
-const Layout: React.FC<{ children?: React.ReactNode; themeToggler: React.ReactElement }> = ({
-  children,
-  themeToggler,
-}) => {
+export interface ThemeToggleProp {
+  themeToggle: React.ReactElement;
+}
+
+interface LayoutProps extends ThemeToggleProp {
+  children?: React.ReactElement;
+}
+
+const Layout = ({ children, themeToggle: themeToggle }: LayoutProps) => {
   return (
     <>
       <Head>
@@ -26,7 +31,7 @@ const Layout: React.FC<{ children?: React.ReactNode; themeToggler: React.ReactEl
         alignItems={'center'}
         justifyContent={'space-between'}
       >
-        <NavigationBar themeToggler={themeToggler} />
+        <NavigationBar themeToggle={themeToggle} />
 
         <Container
           as={'main'}

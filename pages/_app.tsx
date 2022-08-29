@@ -3,15 +3,15 @@ import { Layout } from '@components';
 import { GlobalStyle } from '@styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { useTheme, ThemeHook } from '@hooks';
-import { ThemeToggler } from '@components';
+import { ThemeToggle } from '@components';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { theme, themeMode, themeToggler }: ThemeHook = useTheme();
+  const { theme, themeMode, themeToggle }: ThemeHook = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Layout themeToggler={<ThemeToggler themeMode={themeMode} themeToggler={themeToggler} />}>
+      <Layout themeToggle={<ThemeToggle themeMode={themeMode} themeToggle={themeToggle} />}>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>

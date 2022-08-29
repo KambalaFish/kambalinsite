@@ -10,7 +10,7 @@ export enum ThemeMode {
 export type ThemeHook = {
   theme: DefaultTheme;
   themeMode: ThemeMode;
-  themeToggler: () => void;
+  themeToggle: () => void;
 };
 
 function useTheme(): ThemeHook {
@@ -21,7 +21,7 @@ function useTheme(): ThemeHook {
     window.localStorage.setItem('theme', theme);
   }
 
-  const themeToggler = () =>
+  const themeToggle = () =>
     themeMode === ThemeMode.light ? saveThemeMode(ThemeMode.dark) : saveThemeMode(ThemeMode.light);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function useTheme(): ThemeHook {
   return {
     theme: themeMode === ThemeMode.light ? lightTheme : darkTheme,
     themeMode,
-    themeToggler,
+    themeToggle: themeToggle,
   };
 }
 

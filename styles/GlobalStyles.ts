@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     margin: 0;
+    scroll-behavior: smooth;
   }
 
   /*

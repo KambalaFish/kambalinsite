@@ -32,25 +32,16 @@ const StyledLi = styled.li<StyledLiProps>`
       ? theme.mobileMenu.menuItems.styledLi.currentColor
       : theme.mobileMenu.menuItems.styledLi.color};
 
-  ::before,
-  ::after {
+  ::before {
     content: '';
     position: absolute;
     top: calc(var(--font-size) / 2 - 10px / 2);
     display: ${({ isCurrent }) => (isCurrent ? 'block' : 'none')};
     border-style: solid;
-  }
-  ::before {
     border-color: transparent transparent transparent
       ${({ theme }) => theme.mobileMenu.menuItems.styledLi.currentColor};
     border-width: 10px 0 10px 20px;
     left: -2rem;
-  }
-  ::after {
-    border-color: transparent ${({ theme }) => theme.mobileMenu.menuItems.styledLi.currentColor}
-      transparent transparent;
-    border-width: 10px 20px 10px 0;
-    right: -2rem;
   }
 `;
 

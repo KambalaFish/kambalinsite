@@ -16,14 +16,31 @@ const StyledSun = styled(IoIosSunny)`
   margin-top: calc((2.375rem - 2rem) / 2);
 `;
 
+const StyledMoon = styled(IoMdMoon)`
+  color: rgb(148, 144, 141);
+  cursor: pointer;
+  margin-top: calc((2.375rem - 2rem) / 2);
+`;
+
 const TooltipWrap = styled.span<{ content: string }>`
   position: relative;
+  --icon-size: 2.4rem;
+  ${minDeviceMedia.tablet} {
+    --icon-size: 2rem;
+  }
+  ${StyledSun}, ${StyledMoon} {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
   :hover::after {
+    --font-size: 0.8rem;
+    --line-height: 1.2;
     display: none;
     content: '${(props) => props.content}';
     position: absolute;
-    font-size: 0.8rem;
-    line-height: 1.2;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
     width: max-content;
     border-radius: 0.5rem/0.75rem;
     background-color: ${({ theme }) => theme.selection.backgroundColor};
@@ -33,32 +50,26 @@ const TooltipWrap = styled.span<{ content: string }>`
   ${minDeviceMedia.tablet} {
     :hover::after {
       display: inline;
-      top: calc(2rem / 2 - (1.2 * 0.8rem + 0.3rem) / 2);
-      right: 3rem;
+      top: calc(var(--icon-size) / 2 - (var(--line-height) * var(--font-size)) / 2);
+      right: calc(var(--icon-size) + 0.5rem);
     }
   }
   ${minDeviceMedia.laptop} {
     :hover::after {
-      top: 3rem;
-      right: -80%;
+      top: calc(var(--icon-size) + 0.75rem);
+      left: -3ch;
     }
   }
-`;
-
-const StyledMoon = styled(IoMdMoon)`
-  color: rgb(148, 144, 141);
-  cursor: pointer;
-  margin-top: calc((2.375rem - 2rem) / 2);
 `;
 
 const ThemeToggle = ({ themeMode, themeToggle }: ThemeToggleProps): React.ReactElement => {
   return themeMode === ThemeMode.dark ? (
     <TooltipWrap content={'на светлую'}>
-      <StyledSun size={'2em'} onClick={themeToggle} />
+      <StyledSun onClick={themeToggle} />
     </TooltipWrap>
   ) : (
     <TooltipWrap content={'на тёмную'}>
-      <StyledMoon size={'2em'} onClick={themeToggle} />
+      <StyledMoon onClick={themeToggle} />
     </TooltipWrap>
   );
 };

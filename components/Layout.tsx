@@ -37,7 +37,7 @@ const Layout = ({ children, themeToggle: themeToggle }: LayoutProps) => {
           as={'main'}
           maxWidth={'100%'}
           my={'3rem'}
-          mx={['auto', 'calc(1ch + 2*0.625rem + 2ch)', 'auto']}
+          mx={['calc(0.75rem + 2.4rem)', 'calc(0.75rem + 2.4rem)', 'auto)']}
           alignContent={'center'}
         >
           {children}

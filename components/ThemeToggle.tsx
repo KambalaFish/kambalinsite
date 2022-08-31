@@ -30,7 +30,7 @@ const TooltipWrap = styled.span<{ content: string }>`
     color: ${({ theme }) => theme.selection.color};
     padding: 0.3rem;
   }
-  ${minDeviceMedia.mobile} {
+  ${minDeviceMedia.tablet} {
     :hover::after {
       display: inline;
       top: calc(2rem / 2 - (1.2 * 0.8rem + 0.3rem) / 2);

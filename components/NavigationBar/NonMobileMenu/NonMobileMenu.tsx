@@ -1,10 +1,10 @@
 import { Container, Grid } from '@components';
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { NextRouter, useRouter } from 'next/router';
-import { navPages } from './navPages';
-import { ThemeToggleProp } from '../Layout';
+import { navPages } from '../navPages';
+import { ThemeToggleProp } from '../../Layout';
+import { Links } from '../Links';
 
 const StyledA = styled.a<{ current?: boolean }>`
   color: ${({ theme }) => theme.styledLink.color};
@@ -31,22 +31,6 @@ const StyledLink: React.FC<StyledLinkProps> = ({ href, name, current }) => (
   </Link>
 );
 
-const Links = (): React.ReactElement => {
-  const router: NextRouter = useRouter();
-  const items = useMemo<React.ReactElement[]>(() => {
-    return navPages.map(({ href, pageName }) => (
-      <StyledLink
-        key={pageName}
-        current={router.pathname.endsWith(href)}
-        href={href}
-        name={pageName}
-      />
-    ));
-  }, [router.pathname]);
-
-  return <>{items}</>;
-};
-
 const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => {
   return (
     <Grid
@@ -54,7 +38,7 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
       gridTemplateColumns={`1fr`}
       justifyContent={'center'}
       justifyItems={'center'}
-      display={[/*below 576*/ 'none', /*min-576*/ 'grid']}
+      display={['none', 'none', 'grid']}
     >
       <Container
         alignItems={'center'}
@@ -77,7 +61,11 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
           backgroundColor={'navBarBackground'}
           gridColumnGap={'0.5rem'}
         >
-          <Links />
+          <Links
+            render={(href, pageName, isCurrent) => (
+              <StyledLink key={pageName} current={isCurrent} href={href} name={pageName} />
+            )}
+          />
         </Grid>
       </Container>
       <Container

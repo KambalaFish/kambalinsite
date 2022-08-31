@@ -16,7 +16,9 @@ const StyledBurger = styled.div<ItemsVisibility>`
     width: 100%;
     transition: all 0.5s ease-in-out;
     background-color: ${({ theme, areItemsVisible }) =>
-      areItemsVisible ? theme.backgroundColor : theme.fontColor};
+      areItemsVisible
+        ? theme.mobileMenu.burger.backgroundColorItemsVisible
+        : theme.mobileMenu.burger.backgroundColorItemsInvisible};
   }
   &::before,
   &::after {

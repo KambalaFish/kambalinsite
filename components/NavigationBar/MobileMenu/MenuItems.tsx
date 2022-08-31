@@ -11,9 +11,8 @@ const StyledMenuItems = styled(Container)<ItemsVisibility>`
   left: ${({ areItemsVisible }) => (areItemsVisible ? '0' : '-100%')};
   height: 100%;
   width: 100%;
-  opacity: 0.99;
   z-index: 1;
-  background-color: ${({ theme }) => theme.mobileMenuItems.backgroundColor};
+  background-color: ${({ theme }) => theme.mobileMenu.menuItems.backgroundColor};
   justify-content: center;
   transition: left 0.5s ease-in-out;
   overflow-y: auto;
@@ -28,7 +27,10 @@ const StyledLi = styled.li<StyledLiProps>`
   font-size: var(--font-size);
   text-decoration: none;
   position: relative;
-  color: ${({ isCurrent, theme }) => (isCurrent ? theme.backgroundColor : 'inherit')};
+  color: ${({ isCurrent, theme }) =>
+    isCurrent
+      ? theme.mobileMenu.menuItems.styledLi.currentColor
+      : theme.mobileMenu.menuItems.styledLi.color};
 
   ::before,
   ::after {
@@ -39,12 +41,14 @@ const StyledLi = styled.li<StyledLiProps>`
     border-style: solid;
   }
   ::before {
-    border-color: transparent transparent transparent ${({ theme }) => theme.backgroundColor};
+    border-color: transparent transparent transparent
+      ${({ theme }) => theme.mobileMenu.menuItems.styledLi.currentColor};
     border-width: 10px 0 10px 20px;
     left: -2rem;
   }
   ::after {
-    border-color: transparent ${({ theme }) => theme.backgroundColor} transparent transparent;
+    border-color: transparent ${({ theme }) => theme.mobileMenu.menuItems.styledLi.currentColor}
+      transparent transparent;
     border-width: 10px 20px 10px 0;
     right: -2rem;
   }

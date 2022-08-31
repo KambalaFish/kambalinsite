@@ -107,8 +107,18 @@ const lightTheme: DefaultTheme = {
       },
     },
   },
-  mobileMenuItems: {
-    backgroundColor: `rgb(150,155,160)`,
+  mobileMenu: {
+    menuItems: {
+      backgroundColor: 'rgba(255, 255, 255, 0.99)',
+      styledLi: {
+        color: 'rgb(72,72,72)',
+        currentColor: 'rgb(2,2,2)',
+      },
+    },
+    burger: {
+      backgroundColorItemsVisible: 'rgb(2,2,2)',
+      backgroundColorItemsInvisible: 'rgb(148, 144, 141)',
+    },
   },
 };
 export { lightTheme };

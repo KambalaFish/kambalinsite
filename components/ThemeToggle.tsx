@@ -46,7 +46,7 @@ const TooltipWrap = styled.span<{ content: string }>`
 `;
 
 const StyledMoon = styled(IoMdMoon)`
-  color: #94908d;
+  color: rgb(148, 144, 141);
   cursor: pointer;
   margin-top: calc((2.375rem - 2rem) / 2);
 `;

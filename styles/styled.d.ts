@@ -105,8 +105,18 @@ declare module 'styled-components' {
         };
       };
     };
-    mobileMenuItems: {
-      backgroundColor: string;
+    mobileMenu: {
+      menuItems: {
+        backgroundColor: string;
+        styledLi: {
+          color: string;
+          currentColor: string;
+        };
+      };
+      burger: {
+        backgroundColorItemsVisible: string;
+        backgroundColorItemsInvisible: string;
+      };
     };
   }
 }

@@ -112,9 +112,18 @@ const darkTheme: DefaultTheme = {
       },
     },
   },
-  mobileMenuItems: {
-    // backgroundColor: `rgb(100, 130, 120)`,
-    backgroundColor: `rgb(8, 32, 16)`,
+  mobileMenu: {
+    menuItems: {
+      backgroundColor: 'rgba(16,4,16,0.99)',
+      styledLi: {
+        color: 'rgb(0, 99, 58)',
+        currentColor: 'rgb(61, 193, 138)',
+      },
+    },
+    burger: {
+      backgroundColorItemsVisible: 'rgb(61, 193, 138)',
+      backgroundColorItemsInvisible: 'rgb(255, 255, 255)',
+    },
   },
 };
 

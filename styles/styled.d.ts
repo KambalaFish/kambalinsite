@@ -1,8 +1,7 @@
 import {} from 'styled-components/cssprop';
 import 'styled-components';
 
-type Colormode = {
-  color: string;
+type bgColor = {
   backgroundColor: string;
 };
 declare module 'styled-components' {
@@ -105,6 +104,9 @@ declare module 'styled-components' {
           };
         };
       };
+    };
+    mobileMenuItems: {
+      backgroundColor: string;
     };
   }
 }

@@ -107,5 +107,8 @@ const lightTheme: DefaultTheme = {
       },
     },
   },
+  mobileMenuItems: {
+    backgroundColor: `rgb(150,155,160)`,
+  },
 };
 export { lightTheme };

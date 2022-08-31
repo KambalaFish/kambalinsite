@@ -112,6 +112,10 @@ const darkTheme: DefaultTheme = {
       },
     },
   },
+  mobileMenuItems: {
+    // backgroundColor: `rgb(100, 130, 120)`,
+    backgroundColor: `rgb(8, 32, 16)`,
+  },
 };
 
 export { darkTheme };

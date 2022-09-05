@@ -4,14 +4,20 @@ import { GlobalStyle } from '@styles/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
 import { useTheme, ThemeHook } from '@hooks';
 import { ThemeToggle } from '@components';
+import { useMemo } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { theme, themeMode, themeToggle }: ThemeHook = useTheme();
 
+  const themeToggleMemoized = useMemo(
+    () => <ThemeToggle themeMode={themeMode} themeToggle={themeToggle} />,
+    [themeMode, themeToggle]
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Layout themeToggle={<ThemeToggle themeMode={themeMode} themeToggle={themeToggle} />}>
+      <Layout themeToggle={themeToggleMemoized}>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { darkTheme, lightTheme } from '@styles/theme';
 import { DefaultTheme } from 'styled-components';
 
@@ -21,8 +21,9 @@ function useTheme(): ThemeHook {
     window.localStorage.setItem('theme', theme);
   }
 
-  const themeToggle = () =>
+  const themeToggle = useCallback(() => {
     themeMode === ThemeMode.light ? saveThemeMode(ThemeMode.dark) : saveThemeMode(ThemeMode.light);
+  }, [themeMode]);
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('theme') as ThemeMode | undefined;
@@ -58,7 +59,7 @@ function useTheme(): ThemeHook {
   return {
     theme: themeMode === ThemeMode.light ? lightTheme : darkTheme,
     themeMode,
-    themeToggle: themeToggle,
+    themeToggle,
   };
 }
 

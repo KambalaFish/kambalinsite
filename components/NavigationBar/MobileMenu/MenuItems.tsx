@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Container } from '@components';
 import Link from 'next/link';
@@ -48,6 +48,19 @@ const StyledLi = styled.li<StyledLiProps>`
 import { Links } from '../Links';
 
 const MenuItems = ({ areItemsVisible, setItemsVisibility }: MenuItemsState): React.ReactElement => {
+  const linksRenderer = useCallback(
+    (href: string, pageName: string, isCurrent: boolean) => (
+      <StyledLi
+        isCurrent={isCurrent}
+        key={pageName}
+        onClick={() => setItemsVisibility((state) => !state)}
+      >
+        <Link href={href}>{pageName}</Link>
+      </StyledLi>
+    ),
+    [setItemsVisibility]
+  );
+
   return (
     <StyledMenuItems areItemsVisible={areItemsVisible} display={['flex', 'flex', 'none']}>
       <Container
@@ -60,17 +73,7 @@ const MenuItems = ({ areItemsVisible, setItemsVisibility }: MenuItemsState): Rea
           list-style-type: none;
         `}
       >
-        <Links
-          render={(href, pageName, isCurrent) => (
-            <StyledLi
-              isCurrent={isCurrent}
-              key={pageName}
-              onClick={() => setItemsVisibility((state) => !state)}
-            >
-              <Link href={href}>{pageName}</Link>
-            </StyledLi>
-          )}
-        />
+        <Links render={linksRenderer} />
       </Container>
     </StyledMenuItems>
   );

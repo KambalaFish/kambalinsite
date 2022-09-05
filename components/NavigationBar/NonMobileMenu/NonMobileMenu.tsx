@@ -31,6 +31,10 @@ const StyledLink: React.FC<StyledLinkProps> = ({ href, name, current }) => (
   </Link>
 );
 
+const linksRenderer = (href: string, pageName: string, isCurrent: boolean): React.ReactElement => (
+  <StyledLink key={pageName} current={isCurrent} href={href} name={pageName} />
+);
+
 const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => {
   return (
     <Grid
@@ -61,11 +65,7 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
           backgroundColor={'navBarBackground'}
           gridColumnGap={'0.5rem'}
         >
-          <Links
-            render={(href, pageName, isCurrent) => (
-              <StyledLink key={pageName} current={isCurrent} href={href} name={pageName} />
-            )}
-          />
+          <Links render={linksRenderer} />
         </Grid>
       </Container>
       <Container

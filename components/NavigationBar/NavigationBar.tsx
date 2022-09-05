@@ -3,11 +3,15 @@ import { NonMobileMenu } from './NonMobileMenu/NonMobileMenu';
 import { MobileMenu } from './MobileMenu/MobileMenu';
 import { ThemeToggleProp } from '../Layout';
 
-const NavigationBar = ({ themeToggle }: ThemeToggleProp): React.ReactElement => (
-  <nav>
-    <MobileMenu themeToggle={themeToggle} />
-    <NonMobileMenu themeToggle={themeToggle} />
-  </nav>
-);
+const NavigationBar = React.memo(function NavigationBar({
+  themeToggle,
+}: ThemeToggleProp): React.ReactElement {
+  return (
+    <nav>
+      <MobileMenu themeToggle={themeToggle} />
+      <NonMobileMenu themeToggle={themeToggle} />
+    </nav>
+  );
+});
 
 export default NavigationBar;

@@ -117,6 +117,9 @@ declare module 'styled-components' {
         backgroundColorItemsVisible: string;
         backgroundColorItemsInvisible: string;
       };
+      phone: {
+        color: string;
+      };
     };
   }
 }

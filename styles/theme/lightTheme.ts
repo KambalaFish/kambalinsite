@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components';
 import { breakpoints } from './breakpoints';
 
 const ltBackgroundColor = 'rgb(245,245,245)';
+const moonGray = 'rgb(148, 144, 141)';
 
 const lightTheme: DefaultTheme = {
   breakpoints,
@@ -117,7 +118,10 @@ const lightTheme: DefaultTheme = {
     },
     burger: {
       backgroundColorItemsVisible: 'rgb(2,2,2)',
-      backgroundColorItemsInvisible: 'rgb(148, 144, 141)',
+      backgroundColorItemsInvisible: moonGray,
+    },
+    phone: {
+      color: moonGray,
     },
   },
 };

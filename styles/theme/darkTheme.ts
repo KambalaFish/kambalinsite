@@ -124,6 +124,9 @@ const darkTheme: DefaultTheme = {
       backgroundColorItemsVisible: 'rgb(61, 193, 138)',
       backgroundColorItemsInvisible: 'rgb(255, 255, 255)',
     },
+    phone: {
+      color: '#00b979',
+    },
   },
 };
 

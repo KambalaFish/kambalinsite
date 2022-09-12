@@ -4,15 +4,18 @@ import { Container, Grid, PrimaryButton, SecondaryButton, Text } from '@componen
 import { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import { Title } from '@components';
 import { AnimatedEmoji } from '@components';
-import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { Avatar, TechCard, techStack } from '@components/indexPage';
 import { contactsHighlight, nameAnimation, specializationAnimation } from '@styles/indexPage';
+import { ModalWindow } from '@components';
+import { useState } from 'react';
+import { Contacts } from '@components/indexPage';
 
 const Home: NextPage = () => {
   const router: NextRouter = useRouter();
   const styleForContactsActiveAnchor: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined =
     router.asPath.endsWith('/#contacts') ? contactsHighlight : undefined;
+  const [isModalVisible, setModalVisibility] = useState(false);
 
   return (
     <>
@@ -99,14 +102,12 @@ const Home: NextPage = () => {
           <Grid
             gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)']}
             gridColumnGap={['0', '0', '1.25rem']}
-            gridRowGap={['0.5rem', '0.5rem', '0']}
+            gridRowGap={['0.75rem', '0.5rem', '0']}
             justifyItems={'stretch'}
           >
-            <Link href={'/contacts'}>
-              <PrimaryButton>
-                Мои контакты <AnimatedEmoji>👋</AnimatedEmoji>
-              </PrimaryButton>
-            </Link>
+            <PrimaryButton onClick={() => setModalVisibility(true)}>
+              Мои контакты <AnimatedEmoji>👋</AnimatedEmoji>
+            </PrimaryButton>
             <a
               href={'https://calendly.com/kambalindmitry/meeting'}
               target={'_blank'}
@@ -120,6 +121,13 @@ const Home: NextPage = () => {
           </Grid>
         </Container>
       </Container>
+      <ModalWindow
+        isVisible={isModalVisible}
+        setModalVisibility={setModalVisibility}
+        contentAreaWidth={'max-content'}
+      >
+        <Contacts />
+      </ModalWindow>
     </>
   );
 };

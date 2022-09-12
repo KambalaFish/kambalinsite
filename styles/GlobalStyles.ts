@@ -50,46 +50,46 @@ const GlobalStyle = createGlobalStyle`
       background-color: ${({ theme }) => theme.selection.backgroundColor};
     }
 
-  html::-webkit-scrollbar {width: 1.5rem;};
-  html::-webkit-scrollbar-thumb {
+  *::-webkit-scrollbar {width: 1.5rem;};
+  *::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.scrollbar.thumb.backgroundColor};
     box-shadow: inset 0 0 0.75rem 0.25rem ${({ theme }) => theme.scrollbar.thumb.boxShadowColor};
     border-radius: 1.5rem;
   }
 
-  html::-webkit-scrollbar-thumb:hover {
+  *::-webkit-scrollbar-thumb:hover {
     background-color: ${({ theme }) => theme.scrollbar.thumb.hover.backgroundColor};
     box-shadow: inset 0 0 0.75rem 0.25rem ${({ theme }) =>
       theme.scrollbar.thumb.hover.boxShadowColor};
   }
 
-  html::-webkit-scrollbar-button{
+  *::-webkit-scrollbar-button{
     display: block;
     background-color: ${({ theme }) => theme.scrollbar.button.backgroundColor};
     height: 1.5rem;
     border-radius: 25%;
   }
 
-  html::-webkit-scrollbar-button:hover, html::-webkit-scrollbar-button:hover{
+  *::-webkit-scrollbar-button:hover, *::-webkit-scrollbar-button:hover{
     background-color: ${({ theme }) => theme.scrollbar.button.hover.backgroundColor};
   }
 
-  html::-webkit-scrollbar-button:vertical:start:increment{
+  *::-webkit-scrollbar-button:vertical:start:increment{
     display: none;
   }
 
-  html::-webkit-scrollbar-button:vertical:start:decrement {
+  *::-webkit-scrollbar-button:vertical:start:decrement {
     border-style: solid;
     border-width: 0 0.75rem 1.5rem 0.75rem;
     border-color: transparent transparent ${({ theme }) =>
       theme.scrollbar.button.arrow.backgroundColor} transparent;
   }
-  html::-webkit-scrollbar-button:vertical:start:hover {
+  *::-webkit-scrollbar-button:vertical:start:hover {
     border-color: transparent transparent ${({ theme }) =>
       theme.scrollbar.button.arrow.hover.backgroundColor} transparent;
   }
 
-  html::-webkit-scrollbar-button:vertical:end:increment {
+  *::-webkit-scrollbar-button:vertical:end:increment {
     //background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ee/Chevron-down.svg');
     border-style: solid;
     border-width: 1.5rem 0.75rem 0 0.75rem;
@@ -97,12 +97,12 @@ const GlobalStyle = createGlobalStyle`
       theme.scrollbar.button.arrow.backgroundColor} transparent transparent transparent;
   }
 
-  html::-webkit-scrollbar-button:vertical:end:hover{
+  *::-webkit-scrollbar-button:vertical:end:hover{
     border-color: ${({ theme }) =>
       theme.scrollbar.button.arrow.hover.backgroundColor} transparent transparent transparent;
   }
 
-  html::-webkit-scrollbar-button:vertical:end:decrement {
+  *::-webkit-scrollbar-button:vertical:end:decrement {
     display: none;
   }
   

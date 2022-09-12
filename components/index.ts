@@ -9,3 +9,4 @@ export { default as AnimatedEmoji } from './AnimatedEmoji';
 export { PrimaryButton, SecondaryButton } from './Button';
 export { default as ThemeToggle } from './ThemeToggle';
 export { Pagination } from './Pagination';
+export { ModalWindow } from './ModalWindow/ModalWindow';

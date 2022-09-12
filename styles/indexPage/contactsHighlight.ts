@@ -45,8 +45,11 @@ const contactsHighlight: FlattenInterpolation<ThemeProps<DefaultTheme>> = css`
     border-radius: 2.5rem/1.5rem;
     width: 100%;
   }
-  padding: 0 1.5rem 1.5rem;
-  animation: makeOpaque ease-in-out 0.8s both, tada ease-in-out 1.6s;
+  padding: 0 2rem 2rem;
+  ${minDeviceMedia.tablet} {
+    padding: 0 1.5rem 1.5rem;
+  }
+  animation: makeOpaque ease-in-out 0.8s both 0.7s, tada ease-in-out 1s;
   border-radius: 3rem;
   background-color: ${({ theme }) => theme.contactsHighlight.backgroundColor};
   box-shadow: 0 0 4rem ${({ theme }) => theme.contactsHighlight.boxShadow.spreadRadius}
@@ -55,6 +58,10 @@ const contactsHighlight: FlattenInterpolation<ThemeProps<DefaultTheme>> = css`
   transition: background-color ease-in-out 0.8s, box-shadow ease-in-out 0.8s;
   ${SecondaryButton} {
     background-color: ${({ theme }) => theme.contactsHighlight.secondaryButton.backgroundColor};
+    padding: 1.125rem 2rem;
+    ${minDeviceMedia.mobile} {
+      padding: 1.125rem 3.125rem;
+    }
   }
   ${SecondaryButton}:hover {
     background-color: rgba(255, 255, 255, 0.001);

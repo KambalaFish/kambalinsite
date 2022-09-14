@@ -82,15 +82,16 @@ const ContactText = styled(Text)`
 
 const ContactContainer = styled(Container)`
   flex-direction: row;
+  --hover-text: ${({ theme }) => theme.contactsModal.hoverTextColor};
   :hover ${ContactText} {
-    color: #3cffb3;
+    color: var(--hover-text);
     transition: color 0.5s linear 0s;
   }
   :hover ${ContactText}::before {
     transform-origin: left;
     transform: scale(1, 1);
     transition: background-color 0.5s linear, transform 0.5s linear;
-    background-color: #3cffb3;
+    background-color: var(--hover-text);
   }
 `;
 

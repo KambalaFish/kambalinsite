@@ -155,5 +155,8 @@ const lightTheme: DefaultTheme = {
       },
     },
   },
+  contactsModal: {
+    hoverTextColor: 'rgb(233, 168, 51)',
+  },
 };
 export { lightTheme };

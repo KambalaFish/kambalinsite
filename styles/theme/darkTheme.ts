@@ -159,6 +159,9 @@ const darkTheme: DefaultTheme = {
       },
     },
   },
+  contactsModal: {
+    hoverTextColor: 'rgb(60, 255, 179)',
+  },
 };
 
 export { darkTheme };

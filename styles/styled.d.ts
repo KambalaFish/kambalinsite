@@ -149,5 +149,8 @@ declare module 'styled-components' {
         };
       };
     };
+    contactsModal: {
+      hoverTextColor: string;
+    };
   }
 }

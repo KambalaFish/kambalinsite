@@ -34,8 +34,13 @@ const onCloseAnimation = keyframes`
 
 const ContentArea = styled(Container)<Visibility>`
   cursor: auto;
-  background-color: rgba(0, 0, 0);
-  box-shadow: 0 0 2rem 0.25rem rgb(32, 32, 32), inset 0 0 1.25rem 0.75rem rgb(18, 18, 18);
+  background-color: ${({ theme }) => theme.modalWindow.contentArea.backgroundColor};
+  box-shadow: 0 0 ${({ theme }) => theme.modalWindow.contentArea.boxShadow.outSet.blurRadius}
+      ${({ theme }) => theme.modalWindow.contentArea.boxShadow.outSet.spreadRadius}
+      ${({ theme }) => theme.modalWindow.contentArea.boxShadow.outSet.color},
+    inset 0 0 ${({ theme }) => theme.modalWindow.contentArea.boxShadow.inset.blurRadius}
+      ${({ theme }) => theme.modalWindow.contentArea.boxShadow.inset.spreadRadius}
+      ${({ theme }) => theme.modalWindow.contentArea.boxShadow.inset.color};
   border-radius: 2.5rem;
   padding: calc(var(--btn-size) * 1.5);
   position: relative;

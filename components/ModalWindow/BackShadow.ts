@@ -21,7 +21,7 @@ const BackShadow = styled(Container)<BackShadowProps>`
   width: 100%;
   height: 100%;
   padding: 2rem 1rem;
-  background-color: rgba(18, 18, 18, 0.95);
+  background-color: ${({ theme }) => theme.modalWindow.backShadow.backgroundColor};
   ${({ isVisible }) => showHideBackShadow(isVisible)};
   z-index: 9999;
   transition: visibility ${TRANSITION_TIME}ms, opacity ${TRANSITION_TIME}ms linear,

@@ -9,21 +9,24 @@ const CloseButton = styled.div`
   width: var(--btn-size);
   border-radius: 50%;
   aspect-ratio: 1 / 1;
-  background-color: rgb(185, 0, 0);
+  background-color: ${({ theme }) => theme.modalWindow.closeButton.backgroundColor};
   cursor: pointer;
-  --cross-color: rgb(168, 168, 168);
-  box-shadow: inset 0 0 0.2rem 0.125rem var(--cross-color);
+  --cross-color: ${({ theme }) => theme.modalWindow.closeButton.crossColor};
+  --box-shadow-color: ${({ theme }) => theme.modalWindow.closeButton.boxShadowColor};
+  box-shadow: inset 0 0 ${({ theme }) => theme.modalWindow.closeButton.blurRadius} 0.125rem
+    var(--box-shadow-color);
   transition: box-shadow ${CB_TRANSITION_TIME}ms ease-in, transform ${CA_CLOSING_TIME / 2}ms linear,
     background-color ${CB_TRANSITION_TIME}ms ease-in;
 
   :hover,
   :hover::before,
   :hover::after {
-    --cross-color: rgb(255, 255, 255);
+    --cross-color: ${({ theme }) => theme.modalWindow.closeButton.hover.crossColor};
   }
 
   :hover {
-    background-color: rgb(255, 0, 0);
+    --box-shadow-color: ${({ theme }) => theme.modalWindow.closeButton.hover.boxShadowColor};
+    background-color: ${({ theme }) => theme.modalWindow.closeButton.hover.backgroundColor};
     transition: box-shadow ${CB_TRANSITION_TIME}ms ease-in-out,
       background-color ${CB_TRANSITION_TIME}ms ease-in-out;
   }

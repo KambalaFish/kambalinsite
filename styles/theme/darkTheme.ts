@@ -128,6 +128,37 @@ const darkTheme: DefaultTheme = {
       color: '#00b979',
     },
   },
+  modalWindow: {
+    backShadow: {
+      backgroundColor: 'rgba(18,18,18, 0.925)',
+    },
+    contentArea: {
+      backgroundColor: 'rgba(0, 0, 0)',
+      boxShadow: {
+        outSet: {
+          color: 'rgb(16,16,16)',
+          blurRadius: '4rem',
+          spreadRadius: '1rem',
+        },
+        inset: {
+          color: 'rgb(32,32,32)',
+          blurRadius: '1.5rem',
+          spreadRadius: '0.5rem',
+        },
+      },
+    },
+    closeButton: {
+      backgroundColor: 'rgb(185, 0, 0)',
+      crossColor: 'rgb(168, 168, 168)',
+      boxShadowColor: 'rgb(168, 168, 168)',
+      blurRadius: '0.2rem',
+      hover: {
+        backgroundColor: 'rgb(255, 0, 0)',
+        crossColor: 'rgb(255, 255, 255)',
+        boxShadowColor: 'rgb(255, 255, 255)',
+      },
+    },
+  },
 };
 
 export { darkTheme };

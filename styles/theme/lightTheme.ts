@@ -124,5 +124,36 @@ const lightTheme: DefaultTheme = {
       color: moonGray,
     },
   },
+  modalWindow: {
+    backShadow: {
+      backgroundColor: 'rgba(190, 190, 210, 0.925)',
+    },
+    contentArea: {
+      backgroundColor: ltBackgroundColor,
+      boxShadow: {
+        outSet: {
+          color: 'rgb(190, 190, 200)',
+          blurRadius: '4rem',
+          spreadRadius: '0.125rem',
+        },
+        inset: {
+          color: 'rgb(128,128,128)',
+          blurRadius: '0.75rem',
+          spreadRadius: '0.0125rem',
+        },
+      },
+    },
+    closeButton: {
+      backgroundColor: ltBackgroundColor,
+      crossColor: 'rgb(128,128,128)',
+      boxShadowColor: 'rgb(144,144,144)',
+      blurRadius: '0.4rem',
+      hover: {
+        backgroundColor: 'rgb(255,255,255)',
+        crossColor: 'rgb(32,32,32)',
+        boxShadowColor: 'rgb(92, 92, 92)',
+      },
+    },
+  },
 };
 export { lightTheme };

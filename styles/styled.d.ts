@@ -1,9 +1,6 @@
 import {} from 'styled-components/cssprop';
 import 'styled-components';
 
-type bgColor = {
-  backgroundColor: string;
-};
 declare module 'styled-components' {
   export interface DefaultTheme {
     backgroundColor: string;
@@ -119,6 +116,37 @@ declare module 'styled-components' {
       };
       phone: {
         color: string;
+      };
+    };
+    modalWindow: {
+      backShadow: {
+        backgroundColor: string;
+      };
+      contentArea: {
+        backgroundColor: string;
+        boxShadow: {
+          outSet: {
+            color: string;
+            blurRadius: string;
+            spreadRadius: string;
+          };
+          inset: {
+            color: string;
+            blurRadius: string;
+            spreadRadius: string;
+          };
+        };
+      };
+      closeButton: {
+        backgroundColor: string;
+        crossColor: string;
+        boxShadowColor: string;
+        blurRadius: string;
+        hover: {
+          backgroundColor: string;
+          crossColor: string;
+          boxShadowColor: string;
+        };
       };
     };
   }

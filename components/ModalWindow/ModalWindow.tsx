@@ -42,24 +42,27 @@ const ModalWindow = ({
   };
 
   useEffect(() => {
-    if (isVisible) {
-      document.documentElement.style.overflowY = 'hidden';
-    } else {
-      if (
-        contentAreaRef.current &&
-        contentAreaRef.current.clientHeight > document.documentElement.clientHeight
-      ) {
-        /*in case when content of children prop in ContentArea overflows vertically
-        the setTimeout allows to wait for completion of transition
-        which means the scroll of ModalWindow will disappear,
-        this helps to avoid emergence of two scrolls for a short period of time*/
-        setTimeout(() => {
-          document.documentElement.style.overflowY = 'auto';
-        }, TRANSITION_TIME);
+    const mainContainer = document.querySelector<HTMLDivElement>('#mainContainer');
+    if (mainContainer) {
+      if (isVisible) {
+        mainContainer.style.overflowY = 'hidden';
       } else {
-        /*when there is no vertical overflow in ContentArea
-          we set overflowY immediately without delay*/
-        document.documentElement.style.overflowY = 'auto';
+        if (
+          contentAreaRef.current &&
+          contentAreaRef.current.scrollHeight > mainContainer.clientHeight
+        ) {
+          /*in case when content of children prop in ContentArea overflows vertically
+          the setTimeout allows to wait for completion of transition
+          which means the scroll of ModalWindow will disappear,
+          this helps to avoid emergence of two scrolls for a short period of time*/
+          setTimeout(() => {
+            mainContainer.style.overflowY = 'auto';
+          }, TRANSITION_TIME);
+        } else {
+          /*when there is no vertical overflow in ContentArea
+            we set overflowY immediately without delay*/
+          mainContainer.style.overflowY = 'auto';
+        }
       }
     }
   }, [isVisible]);

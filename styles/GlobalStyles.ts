@@ -1,22 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { minDeviceMedia } from '@styles/theme';
 
 const GlobalStyle = createGlobalStyle`
   
   html {
     margin: 0;
     scroll-behavior: smooth;
-  }
-
-  /*
-    https://stackoverflow.com/a/39289453/13500204
-    устранение сдвига из-за появления скролбара
-  */
-  
-  ${minDeviceMedia.mobile}{
-    html {
-      margin: 0 calc(100% - 100vw) 0 0;
-    }
   }
   
   body {
@@ -56,7 +44,9 @@ const GlobalStyle = createGlobalStyle`
     box-shadow: inset 0 0 0.75rem 0.25rem ${({ theme }) => theme.scrollbar.thumb.boxShadowColor};
     border-radius: 1.5rem;
   }
-
+  *::-webkit-scrollbar-track{
+    background-color: inherit;
+  }
   *::-webkit-scrollbar-thumb:hover {
     background-color: ${({ theme }) => theme.scrollbar.thumb.hover.backgroundColor};
     box-shadow: inset 0 0 0.75rem 0.25rem ${({ theme }) =>

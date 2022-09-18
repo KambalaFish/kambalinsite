@@ -10,6 +10,8 @@ interface LayoutProps extends ThemeToggleProp {
   children?: React.ReactElement;
 }
 
+const mainContainerId = 'mainContainer';
+
 const Layout = ({ children, themeToggle }: LayoutProps) => (
   <>
     <Head>
@@ -24,7 +26,7 @@ const Layout = ({ children, themeToggle }: LayoutProps) => (
       <meta property={'og:image:type'} content={'image/png'} />
     </Head>
     <Container
-      id={'mainContainer'}
+      id={mainContainerId}
       display={'block'}
       height={'100vh'}
       overflowY={'auto'}
@@ -58,4 +60,5 @@ const Layout = ({ children, themeToggle }: LayoutProps) => (
   </>
 );
 
+export { mainContainerId };
 export default Layout;

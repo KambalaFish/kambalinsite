@@ -19,6 +19,7 @@ export enum PointerEvents {
 interface ModalWindowProps extends Visibility, ModalVisibilityToggle {
   children?: React.ReactElement;
   contentAreaWidth?: string | string[];
+  scrollContainerSelector?: string;
 }
 
 const ModalWindow = ({
@@ -26,6 +27,7 @@ const ModalWindow = ({
   setModalVisibility,
   children,
   contentAreaWidth = ['85%', '80%', '70%', '60%', '50%'],
+  scrollContainerSelector = 'html',
 }: ModalWindowProps): React.ReactElement => {
   const contentAreaRef = useRef<HTMLDivElement>(null);
   const [pointerEvents, setPointerEvents] = useState<PointerEvents>(PointerEvents.none);
@@ -42,30 +44,30 @@ const ModalWindow = ({
   };
 
   useEffect(() => {
-    const mainContainer = document.querySelector<HTMLDivElement>('#mainContainer');
-    if (mainContainer) {
+    const scrollableContainer = document.querySelector<HTMLDivElement>(scrollContainerSelector);
+    if (scrollableContainer) {
       if (isVisible) {
-        mainContainer.style.overflowY = 'hidden';
+        scrollableContainer.style.overflowY = 'hidden';
       } else {
         if (
           contentAreaRef.current &&
-          contentAreaRef.current.scrollHeight > mainContainer.clientHeight
+          contentAreaRef.current.scrollHeight > scrollableContainer.clientHeight
         ) {
           /*in case when content of children prop in ContentArea overflows vertically
-          the setTimeout allows to wait for completion of transition
-          which means the scroll of ModalWindow will disappear,
-          this helps to avoid emergence of two scrolls for a short period of time*/
+              the setTimeout allows to wait for completion of transition
+              which means the scroll of ModalWindow will disappear,
+              this helps to avoid emergence of two scrolls for a short period of time*/
           setTimeout(() => {
-            mainContainer.style.overflowY = 'auto';
+            scrollableContainer.style.overflowY = 'auto';
           }, TRANSITION_TIME);
         } else {
           /*when there is no vertical overflow in ContentArea
-            we set overflowY immediately without delay*/
-          mainContainer.style.overflowY = 'auto';
+                we set overflowY immediately without delay*/
+          scrollableContainer.style.overflowY = 'auto';
         }
       }
     }
-  }, [isVisible]);
+  }, [isVisible, scrollContainerSelector]);
 
   /*This useEffect helps to prevent closing modal window by click
   on outside ContentArea during appearance animation of ContentArea*/

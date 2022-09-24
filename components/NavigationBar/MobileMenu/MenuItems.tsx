@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Container } from '@components';
-import Link from 'next/link';
 import { MenuItemsState } from './MobileMenu';
 import { ItemsVisibility } from './MobileMenu';
+import { CustomLink } from '@components';
 
 const StyledMenuItems = styled(Container)<ItemsVisibility>`
   position: fixed;
@@ -50,13 +50,19 @@ import { Links } from '../Links';
 const MenuItems = ({ areItemsVisible, setItemsVisibility }: MenuItemsState): React.ReactElement => {
   const linksRenderer = useCallback(
     (href: string, pageName: string, isCurrent: boolean) => (
-      <StyledLi
-        isCurrent={isCurrent}
-        key={pageName}
-        onClick={() => setItemsVisibility((state) => !state)}
-      >
-        <Link href={href}>{pageName}</Link>
-      </StyledLi>
+      <CustomLink href={href} key={pageName}>
+        {(fn) => (
+          <StyledLi
+            isCurrent={isCurrent}
+            onClick={(event: React.SyntheticEvent) => {
+              setItemsVisibility((state) => !state);
+              fn(event);
+            }}
+          >
+            {pageName}
+          </StyledLi>
+        )}
+      </CustomLink>
     ),
     [setItemsVisibility]
   );

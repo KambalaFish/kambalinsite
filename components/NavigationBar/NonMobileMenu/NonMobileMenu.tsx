@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { navPages } from '../navPages';
 import { ThemeToggleProp } from '../../Layout';
 import { Links } from '../Links';
-import { useRouter } from 'next/router';
+import { CustomLink } from '@components';
 
 const StyledA = styled.a<{ current?: boolean }>`
   color: ${({ theme }) => theme.styledLink.color};
@@ -34,27 +34,16 @@ const StyledLink: React.FC<StyledLinkProps> = ({ href, name, current }) => (
 );
 
 const linksRenderer = (href: string, pageName: string, isCurrent: boolean): React.ReactElement => (
-  <StyledLink key={pageName} current={isCurrent} href={href} name={pageName} />
+  <CustomLink key={pageName} href={href}>
+    {(cb) => (
+      <StyledA onClick={cb} current={isCurrent}>
+        {pageName}
+      </StyledA>
+    )}
+  </CustomLink>
 );
 
 const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => {
-  const router = useRouter();
-  const onNameClick = (event: React.SyntheticEvent) => {
-    event.preventDefault();
-    router.push('/').then(
-      (isSuccess) => {
-        if (isSuccess) {
-          const mainContainer = document.querySelector('#mainContainer');
-          if (mainContainer) {
-            mainContainer.scrollTop = 0;
-          }
-        }
-      },
-      (reason) => {
-        console.error(reason);
-      }
-    );
-  };
   return (
     <Grid
       mt={'2rem'}
@@ -72,7 +61,9 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
         width={['1ch', '1ch', '1ch', 'max-content', 'max-content']}
         css={'opacity: 0.9; overflow-wrap: anywhere; white-space: break-spaces;'}
       >
-        <StyledA onClick={onNameClick}>Дмитрий Камбалин</StyledA>
+        <CustomLink href={'/'}>
+          {(cb) => <StyledA onClick={cb}>Дмитрий Камбалин</StyledA>}
+        </CustomLink>
       </Container>
       <Container alignItems={'center'}>
         <Grid

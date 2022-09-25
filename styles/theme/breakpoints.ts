@@ -11,7 +11,7 @@
 type SizeFormats<T> = { mobile: T; tablet: T; laptop: T; laptopLarge: T };
 
 const sizeNumbers: SizeFormats<number> = {
-  mobile: 425,
+  mobile: 414,
   tablet: 768,
   laptop: 1024,
   laptopLarge: 1440,

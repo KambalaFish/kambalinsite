@@ -4,9 +4,35 @@ import { Container, Grid, Pagination, Text, Title } from '@components';
 import { useState } from 'react';
 import { Card } from '@components/bookmarksPage';
 import { getBookmarks, Raindrops } from '@api';
+import { minDevice, SizeFormatsExtended } from '@styles/theme';
+import { textHeight } from '@components/bookmarksPage';
 
 const perPage = 6;
 const siblingCount = 2;
+
+const cardWidth: SizeFormatsExtended<string> = {
+  mobileSmall: '20rem',
+  mobile: '28rem',
+  tablet: '26rem',
+  laptop: '17rem',
+  laptopLarge: '20rem',
+};
+
+const columnGap: SizeFormatsExtended<string> = {
+  mobileSmall: '2.5rem',
+  mobile: '3rem',
+  tablet: '2rem',
+  laptop: '2rem',
+  laptopLarge: '2rem',
+};
+
+const rowGap: SizeFormatsExtended<string> = {
+  mobileSmall: '2.5rem',
+  mobile: '3rem',
+  tablet: '2rem',
+  laptop: '2rem',
+  laptopLarge: '2rem',
+};
 
 const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -17,7 +43,13 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
       </Head>
       <Container css={'row-gap: 3rem'}>
         <Container
-          maxWidth={['70vw', '70vw', '72vw', 'calc(22vw * 3 + 2*2vw)', 'calc(18vw * 3 + 2*2vw)']}
+          maxWidth={[
+            cardWidth.mobileSmall,
+            cardWidth.mobile,
+            `calc(2 * ${cardWidth.tablet})`,
+            `calc(${cardWidth.laptop} * 3 + 2 * 2rem)`,
+            `calc(${cardWidth.laptopLarge} * 3 + 2 * 2rem)`,
+          ]}
         >
           <Title>Пометки</Title>
           <Text>
@@ -27,19 +59,29 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
         </Container>
         <Container
           height={[
-            'calc(70vw / 16 * 8 * 6 + calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem) * 6 + 5 * 2vw)',
-            'calc(70vw / 16 * 8 * 6 + calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem) * 6 + 5 * 2vw)',
-            'calc(35vw / 16 * 8 * 3 + calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem) * 3 + 2 * 2vw)',
-            'calc(22vw / 16 * 8 * 2 + calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem) * 2 + 1vw)',
-            'calc(18vw / 16 * 8 * 2 + calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem) * 2 + 1vw)',
+            `calc(${cardWidth.mobileSmall} / 16 * 8 * 6 + ${textHeight} * 6 + 5 * ${rowGap.mobileSmall})`,
+            `calc(${cardWidth.mobile} / 16 * 8 * 6 + ${textHeight} * 6 + 5 * ${rowGap.mobile})`,
+            `calc(${cardWidth.tablet} / 16 * 8 * 3 + ${textHeight} * 3 + 2 * ${rowGap.tablet})`,
+            `calc(${cardWidth.laptop} / 16 * 8 * 2 + ${textHeight} * 2 + ${rowGap.laptop})`,
+            `calc(${cardWidth.laptopLarge} / 16 * 8 * 2 + ${textHeight} * 2 + ${rowGap.laptopLarge})`,
           ]}
         >
           <Grid
             gridTemplateColumns={['1fr', '1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
-            // gridColumnGap={'3rem'}
-            gridColumnGap={'2vw'}
-            // gridRowGap={'3rem'}
-            gridRowGap={'2vw'}
+            gridColumnGap={[
+              columnGap.mobileSmall,
+              columnGap.mobile,
+              columnGap.tablet,
+              columnGap.laptop,
+              columnGap.laptopLarge,
+            ]}
+            gridRowGap={[
+              rowGap.mobileSmall,
+              rowGap.mobile,
+              rowGap.tablet,
+              rowGap.laptop,
+              rowGap.laptopLarge,
+            ]}
           >
             {items
               .slice((currentPage - 1) * perPage, (currentPage - 1) * perPage + perPage)
@@ -50,6 +92,19 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
                   imgSrc={el.cover}
                   imgPriority={index < perPage / 2}
                   href={el.link}
+                  cardWidth={[
+                    cardWidth.mobileSmall,
+                    cardWidth.mobile,
+                    cardWidth.tablet,
+                    cardWidth.laptop,
+                    cardWidth.laptopLarge,
+                  ]}
+                  imgSizes={`
+                  ${minDevice.laptopLarge} ${cardWidth.laptopLarge}, 
+                  ${minDevice.laptop} ${cardWidth.laptop}, 
+                  ${minDevice.tablet} ${cardWidth.tablet}, 
+                  ${minDevice.mobile} ${cardWidth.mobile}, 
+                  ${cardWidth.mobileSmall}`}
                 />
               ))}
           </Grid>

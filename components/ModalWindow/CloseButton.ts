@@ -7,8 +7,8 @@ const CloseButton = styled.div`
   right: 1.5rem;
   top: 1.5rem;
   width: var(--btn-size);
+  height: var(--btn-size);
   border-radius: 50%;
-  aspect-ratio: 1 / 1;
   background-color: ${({ theme }) => theme.modalWindow.closeButton.backgroundColor};
   cursor: pointer;
   --cross-color: ${({ theme }) => theme.modalWindow.closeButton.crossColor};

@@ -1,7 +1,6 @@
 import { Container, Text } from '@components';
 import Image from 'next/future/image';
 import React from 'react';
-import { minDevice } from '@styles/theme';
 import { css, useTheme } from 'styled-components';
 import { customLoader } from '@api';
 
@@ -10,18 +9,28 @@ interface CardProps {
   imgPriority: boolean;
   title: string;
   href: string;
+  cardWidth: string | string[];
+  imgSizes: string;
 }
 
 const cardLoader = customLoader({ format: 'auto' });
+const textHeight = `calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem)`;
 
-const Card = ({ imgSrc, title, href, imgPriority }: CardProps): React.ReactElement => {
+const Card = ({
+  imgSrc,
+  title,
+  href,
+  imgPriority,
+  cardWidth,
+  imgSizes,
+}: CardProps): React.ReactElement => {
   const theme = useTheme();
   return (
     <Container
       as={'a'}
       href={href}
       target={'_blank'}
-      width={['70vw', '70vw', '35vw', '22vw', '18vw']}
+      width={cardWidth}
       margin={0}
       padding={0}
       overflow={'hidden'}
@@ -38,13 +47,21 @@ const Card = ({ imgSrc, title, href, imgPriority }: CardProps): React.ReactEleme
         }
       `}
     >
-      <Container width={'100%'} height={'auto'} css={'aspect-ratio: 16 / 8'} position={'relative'}>
+      <Container
+        width={'100%'}
+        height={
+          Array.isArray(cardWidth)
+            ? cardWidth.map((width) => `calc(${width} / 16 * 8)`)
+            : `calc(${cardWidth} / 16 * 8)`
+        }
+        position={'relative'}
+      >
         <Image
           src={imgSrc}
           loader={cardLoader}
           fill
           quality={100}
-          sizes={`${minDevice.laptopLarge} 18vw, ${minDevice.laptop} 22vw, ${minDevice.tablet} 35vw, 70vw`}
+          sizes={imgSizes}
           alt={title}
           priority={imgPriority}
         />
@@ -54,7 +71,7 @@ const Card = ({ imgSrc, title, href, imgPriority }: CardProps): React.ReactEleme
         boxShadow={`inset 0 0 0.5rem 0.4rem ${theme.bookmarks.card.caption.insetBoxShadowColor}`}
         width={'100%'}
         lineHeight={1.1}
-        height={'calc(3 * 1.1 * 1rem + 0.25rem + 0.25rem)'}
+        height={textHeight}
         textAlign={'start'}
         overflow={'hidden'}
         padding={'0.25rem 1rem 0rem'}
@@ -67,4 +84,4 @@ const Card = ({ imgSrc, title, href, imgPriority }: CardProps): React.ReactEleme
   );
 };
 
-export { Card };
+export { Card, textHeight };

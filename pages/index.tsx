@@ -10,7 +10,6 @@ import { contactsHighlight, nameAnimation, specializationAnimation } from '@styl
 import { ModalWindow } from '@components';
 import { useState } from 'react';
 import { Contacts } from '@components/indexPage';
-import { mainContainerId } from '../components/Layout';
 
 const Home: NextPage = () => {
   const router: NextRouter = useRouter();
@@ -121,7 +120,6 @@ const Home: NextPage = () => {
         isVisible={isModalVisible}
         setModalVisibility={setModalVisibility}
         contentAreaWidth={'max-content'}
-        scrollContainerSelector={mainContainerId}
       >
         <Contacts />
       </ModalWindow>

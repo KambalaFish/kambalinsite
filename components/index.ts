@@ -10,4 +10,3 @@ export { PrimaryButton, SecondaryButton } from './Button';
 export { default as ThemeToggle } from './ThemeToggle';
 export { Pagination } from './Pagination';
 export { ModalWindow } from './ModalWindow/ModalWindow';
-export { CustomLink } from './CustomLink';

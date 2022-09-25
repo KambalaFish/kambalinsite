@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { navPages } from '../navPages';
 import { ThemeToggleProp } from '../../Layout';
 import { Links } from '../Links';
-import { CustomLink } from '@components';
 
 const StyledA = styled.a<{ current?: boolean }>`
   color: ${({ theme }) => theme.styledLink.color};
@@ -34,13 +33,7 @@ const StyledLink: React.FC<StyledLinkProps> = ({ href, name, current }) => (
 );
 
 const linksRenderer = (href: string, pageName: string, isCurrent: boolean): React.ReactElement => (
-  <CustomLink key={pageName} href={href}>
-    {(cb) => (
-      <StyledA onClick={cb} current={isCurrent}>
-        {pageName}
-      </StyledA>
-    )}
-  </CustomLink>
+  <StyledLink key={pageName} current={isCurrent} href={href} name={pageName} />
 );
 
 const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => {
@@ -61,9 +54,7 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
         width={['1ch', '1ch', '1ch', 'max-content', 'max-content']}
         css={'opacity: 0.9; overflow-wrap: anywhere; white-space: break-spaces;'}
       >
-        <CustomLink href={'/'}>
-          {(cb) => <StyledA onClick={cb}>Дмитрий Камбалин</StyledA>}
-        </CustomLink>
+        <StyledLink href={'/'} name={'Дмитрий Камбалин'} />
       </Container>
       <Container alignItems={'center'}>
         <Grid
@@ -84,7 +75,13 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
         justifyItems={'flex-start'}
         position={'fixed'}
         top={'calc(2rem + 0.5rem)'}
-        right={['1.5rem', '1.5rem', '1.5rem', '1rem', 'calc(5vw - 100vw + 100%)']}
+        right={[
+          '1.5rem',
+          '1.5rem',
+          '1.5rem',
+          'calc(1rem + 100% - 100vw)',
+          'calc(5vw + 100% - 100vw)',
+        ]}
         width={['1ch', '1ch', '1ch', 'max-content', 'max-content']}
         css={`
           opacity: 0.9;

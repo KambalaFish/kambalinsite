@@ -84,7 +84,7 @@ const NonMobileMenu = ({ themeToggle }: ThemeToggleProp): React.ReactElement => 
         justifyItems={'flex-start'}
         position={'fixed'}
         top={'calc(2rem + 0.5rem)'}
-        right={['1.5rem', '1.5rem', '1.5rem', 0, 'calc(5vw - 100vw + 100%)']}
+        right={['1.5rem', '1.5rem', '1.5rem', '1rem', 'calc(5vw - 100vw + 100%)']}
         width={['1ch', '1ch', '1ch', 'max-content', 'max-content']}
         css={`
           opacity: 0.9;

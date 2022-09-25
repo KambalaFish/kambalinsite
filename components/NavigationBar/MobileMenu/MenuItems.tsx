@@ -8,7 +8,7 @@ import { CustomLink } from '@components';
 const StyledMenuItems = styled(Container)<ItemsVisibility>`
   position: fixed;
   top: 0;
-  left: ${({ areItemsVisible }) => (areItemsVisible ? '0' : '100%')};
+  left: ${({ areItemsVisible }) => (areItemsVisible ? '0' : '-100%')};
   height: 100%;
   width: 100%;
   z-index: 1;

@@ -9,6 +9,7 @@
 // }
 
 type SizeFormats<T> = { mobile: T; tablet: T; laptop: T; laptopLarge: T };
+type SizeFormatsExtended<T> = { mobileSmall: T } & SizeFormats<T>;
 
 const sizeNumbers: SizeFormats<number> = {
   mobile: 414,
@@ -41,3 +42,4 @@ const minDeviceMedia: SizeFormats<string> = {
 };
 
 export { breakpoints, minDeviceMedia, minDevice };
+export type { SizeFormatsExtended };

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { minDeviceMedia } from '@styles/theme';
 
 const GlobalStyle = createGlobalStyle`
   
@@ -37,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
       color: ${({ theme }) => theme.selection.color};
       background-color: ${({ theme }) => theme.selection.backgroundColor};
     }
-
+  ${minDeviceMedia.laptop}{
   *::-webkit-scrollbar {width: 1.5rem;};
   *::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.scrollbar.thumb.backgroundColor};
@@ -95,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
   *::-webkit-scrollbar-button:vertical:end:decrement {
     display: none;
   }
-  
+  }
 `;
 
 export { GlobalStyle };

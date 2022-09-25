@@ -126,7 +126,7 @@ const lightTheme: DefaultTheme = {
   },
   modalWindow: {
     backShadow: {
-      backgroundColor: 'rgba(190, 190, 210, 0.925)',
+      backgroundColor: 'rgba(245, 245, 245, 0.75)',
     },
     contentArea: {
       backgroundColor: ltBackgroundColor,

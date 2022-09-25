@@ -23,8 +23,7 @@ const IndexPill = styled(Container)<IndexPillProps>`
   text-align: center;
   --pill-width: 2.5rem;
   width: var(--pill-width);
-  aspect-ratio: 1 / 1;
-  height: auto;
+  height: var(--pill-width);
   font-weight: 600;
   cursor: pointer;
   border-radius: 50%;
@@ -45,9 +44,8 @@ const Arrow = styled.div`
   position: absolute;
   --arrow-width: 1.25rem;
   width: var(--arrow-width);
-  aspect-ratio: 1 / 1;
+  height: var(--arrow-width);
   border-top-right-radius: 45%;
-  height: auto;
   --border-width: 0.4rem;
   border-right: var(--border-width) solid ${({ theme }) => theme.pagination.arrow.borderColor};
   border-top: var(--border-width) solid ${({ theme }) => theme.pagination.arrow.borderColor};

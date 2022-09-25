@@ -1,9 +1,11 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-/*That CustomLink scrolls to top of the page after clicking on link.
-  The reason I implemented it is that main container in Layout component is 100vh
-  and has overflow-y: auto,
-  so usual Link nextjs component thinks that it is always on top of the page.
+/*The main purpose of CustomLink is to scroll to top of the page after clicking on link.
+  The reason I implemented it is that main container in Layout component has fixed 100vh height
+  and has overflow-y: auto. So usual Link nextjs component scrolls to top of html element,
+  but in our case with fixed height in main component (in Layout), usual Link component
+  thinks that scroll is already on top of the page.
+  So CustomLink helps to avoid this behaviour and scrolls on top of Main container in Layout.
 * */
 const CustomLink = ({
   href,

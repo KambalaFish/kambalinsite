@@ -4,7 +4,7 @@ import { ItemsVisibility, MenuItemsState } from './MobileMenu';
 
 const StyledBurger = styled.div<ItemsVisibility>`
   width: 2.4rem;
-  aspect-ratio: 6 / 5;
+  height: 2rem;
   cursor: pointer;
   position: relative;
   &::before,
@@ -12,8 +12,8 @@ const StyledBurger = styled.div<ItemsVisibility>`
   & span {
     left: 0;
     position: absolute;
-    height: 20%;
-    width: 100%;
+    height: 0.4rem;
+    width: 2.4rem;
     transition: all 0.5s ease-in-out;
     background-color: ${({ theme, areItemsVisible }) =>
       areItemsVisible
@@ -25,15 +25,15 @@ const StyledBurger = styled.div<ItemsVisibility>`
     content: '';
   }
   &::before {
-    top: ${({ areItemsVisible }) => (areItemsVisible ? '50%' : '0')};
+    top: ${({ areItemsVisible }) => (areItemsVisible ? '1rem' : '0')};
     transform: ${({ areItemsVisible }) => areItemsVisible && 'rotate(-45deg)'};
   }
   &::after {
-    bottom: ${({ areItemsVisible }) => (areItemsVisible ? '30%' : '0')};
+    top: ${({ areItemsVisible }) => (areItemsVisible ? '1rem' : '1.6rem')};
     transform: ${({ areItemsVisible }) => areItemsVisible && 'rotate(45deg)'};
   }
   & span {
-    top: 40%;
+    top: 0.8rem;
     transform: ${({ areItemsVisible }) => (areItemsVisible ? 'scale(0)' : 'scale(1)')};
   }
 `;

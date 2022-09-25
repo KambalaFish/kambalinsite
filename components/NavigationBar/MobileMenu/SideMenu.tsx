@@ -32,7 +32,7 @@ const SideMenu = ({
     <Container
       display={['flex', 'flex', 'none']}
       position={'fixed'}
-      left={'0.25rem'}
+      left={['0.25rem', '0.75rem']}
       top={['3rem', '2rem']}
       zIndex={'2'}
       rowGap={'1.5rem'}

@@ -12,6 +12,7 @@ type Raindrop = {
   title: string;
   link: string;
   cover: string;
+  created: string;
 };
 type Raindrops = {
   count: number;

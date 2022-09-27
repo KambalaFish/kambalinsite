@@ -1,1 +1,1 @@
-export { Card, textHeight } from './Card';
+export { Card, captionHeight } from './Card';

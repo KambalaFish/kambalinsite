@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card } from '@components/bookmarksPage';
 import { getBookmarks, Raindrops } from '@api';
 import { minDevice, SizeFormatsExtended } from '@styles/theme';
-import { textHeight } from '@components/bookmarksPage';
+import { captionHeight } from '@components/bookmarksPage';
 
 const perPage = 6;
 const siblingCount = 2;
@@ -59,11 +59,11 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
         </Container>
         <Container
           height={[
-            `calc(${cardWidth.mobileSmall} / 16 * 8 * 6 + ${textHeight} * 6 + 5 * ${rowGap.mobileSmall})`,
-            `calc(${cardWidth.mobile} / 16 * 8 * 6 + ${textHeight} * 6 + 5 * ${rowGap.mobile})`,
-            `calc(${cardWidth.tablet} / 16 * 8 * 3 + ${textHeight} * 3 + 2 * ${rowGap.tablet})`,
-            `calc(${cardWidth.laptop} / 16 * 8 * 2 + ${textHeight} * 2 + ${rowGap.laptop})`,
-            `calc(${cardWidth.laptopLarge} / 16 * 8 * 2 + ${textHeight} * 2 + ${rowGap.laptopLarge})`,
+            `calc(${cardWidth.mobileSmall} / 16 * 8 * 6 + ${captionHeight} * 6 + 5 * ${rowGap.mobileSmall})`,
+            `calc(${cardWidth.mobile} / 16 * 8 * 6 + ${captionHeight} * 6 + 5 * ${rowGap.mobile})`,
+            `calc(${cardWidth.tablet} / 16 * 8 * 3 + ${captionHeight} * 3 + 2 * ${rowGap.tablet})`,
+            `calc(${cardWidth.laptop} / 16 * 8 * 2 + ${captionHeight} * 2 + ${rowGap.laptop})`,
+            `calc(${cardWidth.laptopLarge} / 16 * 8 * 2 + ${captionHeight} * 2 + ${rowGap.laptopLarge})`,
           ]}
         >
           <Grid
@@ -92,6 +92,7 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
                   imgSrc={el.cover}
                   imgPriority={index < perPage / 2}
                   href={el.link}
+                  date={el.created}
                   cardWidth={[
                     cardWidth.mobileSmall,
                     cardWidth.mobile,

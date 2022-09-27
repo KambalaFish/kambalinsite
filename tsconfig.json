@@ -21,7 +21,8 @@
       "@components/bookmarksPage": ["components/bookmarksPage"],
       "@styles/*": ["styles/*"],
       "@hooks": ["hooks"],
-      "@api": ["api"]
+      "@api": ["api"],
+      "@utils": ["utils"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],

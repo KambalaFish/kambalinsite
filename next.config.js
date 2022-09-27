@@ -15,7 +15,7 @@ const nextConfig = {
     },
   },
   eslint: {
-    dirs: ['api', 'components', 'hooks', 'pages', 'styles'],
+    dirs: ['api', 'components', 'hooks', 'pages', 'styles', 'utils'],
   },
 };
 

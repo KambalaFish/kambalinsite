@@ -19,11 +19,25 @@ const nextConfig = {
   },
 };
 
+const nextConfigProd = {
+  ...nextConfig,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+}
+
 if (process.env.ANALYZE){
   const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: true
   });
   module.exports = withBundleAnalyzer({ ...nextConfig });
+}
+
+if (process.env.isProd==='true') {
+  module.exports = nextConfigProd;
 } else {
   module.exports = nextConfig;
 }

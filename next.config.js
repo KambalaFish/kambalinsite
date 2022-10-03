@@ -27,6 +27,7 @@ const nextConfigProd = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  compress: false
 }
 
 if (process.env.ANALYZE){

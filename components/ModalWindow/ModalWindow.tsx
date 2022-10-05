@@ -95,7 +95,7 @@ const ModalWindow = ({
       isVisible={isVisible}
       onClick={onOutOfContentAreaClick}
     >
-      <ContentArea ref={contentAreaRef} isVisible={isVisible} maxWidth={contentAreaWidth}>
+      <ContentArea ref={contentAreaRef} isVisible={isVisible} width={contentAreaWidth}>
         <CloseButton onClick={onClose} />
         {children}
       </ContentArea>

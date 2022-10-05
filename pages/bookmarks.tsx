@@ -41,7 +41,7 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
       <Head>
         <title>Пометки</title>
       </Head>
-      <Container css={'row-gap: 3rem'}>
+      <Container css={'row-gap: 2rem'}>
         <Container
           maxWidth={[
             cardWidth.mobileSmall,

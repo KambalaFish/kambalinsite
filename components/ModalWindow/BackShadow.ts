@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 import Container from '../Container';
 import { PointerEvents, Visibility } from './ModalWindow';
+import { showHide as showHideBackShadow } from '@styles/utils';
 
 const TRANSITION_TIME = 800;
 
 interface BackShadowProps extends Visibility {
   pointerEvents?: PointerEvents;
 }
-
-const showHideBackShadow = (isVisible: boolean) =>
-  isVisible ? `visibility: visible; opacity: 1;` : `visibility: hidden; opacity: 0;`;
 
 const BackShadow = styled(Container)<BackShadowProps>`
   cursor: pointer;

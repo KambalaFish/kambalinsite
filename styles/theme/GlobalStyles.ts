@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { minDeviceMedia } from '@styles/theme';
+import { minDeviceMedia } from '@styles/theme/index';
 
 const GlobalStyle = createGlobalStyle`
   

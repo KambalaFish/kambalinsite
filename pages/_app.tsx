@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { Layout } from '@components';
-import { GlobalStyle } from '@styles/GlobalStyles';
+import { GlobalStyle } from '@styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { useTheme, ThemeHook } from '@hooks';
 import { ThemeToggle } from '@components';

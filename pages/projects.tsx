@@ -5,13 +5,14 @@ import Image from 'next/future/image';
 import React, { useState } from 'react';
 import { css } from 'styled-components';
 import { StyledLink } from '@components/projectsPage';
+import { minDeviceMedia } from '@styles/theme';
 
 const Projects: NextPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [curIndexZavodProject, setCurIndexZavodProject] = useState(0);
   const [isZavodModalChildOpen, setIsZavodModalChildOpen] = useState(false);
 
-  const ZavodProjectModalChild = () => (
+  const zavodProjectModalChild = (
     <Carousel
       curIndex={curIndexZavodProject}
       setCurIndex={setCurIndexZavodProject}
@@ -19,9 +20,13 @@ const Projects: NextPage = () => {
       height={['25rem', '32rem', '30rem', '35rem', '40rem']}
     >
       <Image
+        key={'/projects/slide-1.png'}
         src={'/projects/slide-1.png'}
         css={`
           object-fit: cover;
+          ${minDeviceMedia.tablet} {
+            object-fit: scale-down;
+          }
         `}
         alt={'zavod1'}
         quality={100}
@@ -29,9 +34,13 @@ const Projects: NextPage = () => {
         fill
       />
       <Image
+        key={'/projects/slide-2.png'}
         src={'/projects/slide-2.webp'}
         css={`
           object-fit: cover;
+          ${minDeviceMedia.tablet} {
+            object-fit: scale-down;
+          }
         `}
         alt={'zavod2'}
         quality={100}
@@ -39,9 +48,13 @@ const Projects: NextPage = () => {
         fill
       />
       <Image
+        key={'/projects/slide-3.png'}
         src={'/projects/slide-3.png'}
         css={`
           object-fit: cover;
+          ${minDeviceMedia.tablet} {
+            object-fit: scale-down;
+          }
         `}
         alt={'zavod3'}
         quality={100}
@@ -89,6 +102,7 @@ const Projects: NextPage = () => {
             pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
           >
             <Image
+              key={'/projects/slide-1.png'}
               src={'/projects/slide-1.png'}
               css={`
                 object-fit: cover;
@@ -99,6 +113,7 @@ const Projects: NextPage = () => {
               fill
             />
             <Image
+              key={'/projects/slide-2.webp'}
               src={'/projects/slide-2.webp'}
               css={`
                 object-fit: cover;
@@ -109,6 +124,7 @@ const Projects: NextPage = () => {
               fill
             />
             <Image
+              key={'/projects/slide-3.png'}
               src={'/projects/slide-3.png'}
               css={`
                 object-fit: cover;
@@ -130,7 +146,7 @@ const Projects: NextPage = () => {
             }
           }}
         >
-          {isZavodModalChildOpen && <ZavodProjectModalChild />}
+          {isZavodModalChildOpen && zavodProjectModalChild}
         </ModalWindow>
       </Container>
     </>

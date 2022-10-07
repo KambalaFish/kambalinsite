@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BackShadow, TRANSITION_TIME } from './BackShadow';
-import { ContentArea, CA_ANIM_APPEARANCE_DELAY_TIME } from './ContentArea';
+import { ContentArea, CA_ANIM_APPEARANCE_DELAY_TIME, CA_CLOSING_TIME } from './ContentArea';
 import { CloseButton } from './CloseButton';
 
 export interface Visibility {
@@ -17,9 +17,10 @@ export enum PointerEvents {
 }
 
 interface ModalWindowProps extends Visibility, ModalVisibilityToggle {
-  children?: React.ReactElement;
+  children: React.ReactNode;
   contentAreaWidth?: string | string[];
   scrollContainerSelector?: string;
+  onCloseCb?: () => void;
 }
 
 const ModalWindow = ({
@@ -28,6 +29,7 @@ const ModalWindow = ({
   children,
   contentAreaWidth = ['85%', '80%', '70%', '60%', '50%'],
   scrollContainerSelector = 'html',
+  onCloseCb,
 }: ModalWindowProps): React.ReactElement => {
   const contentAreaRef = useRef<HTMLDivElement>(null);
   const [pointerEvents, setPointerEvents] = useState<PointerEvents>(PointerEvents.none);
@@ -35,6 +37,11 @@ const ModalWindow = ({
   const onClose = () => {
     setModalVisibility(false);
     setPointerEvents(PointerEvents.none);
+    if (onCloseCb) {
+      setTimeout(() => {
+        onCloseCb();
+      }, CA_CLOSING_TIME);
+    }
   };
 
   const onOutOfContentAreaClick = (event: React.UIEvent) => {

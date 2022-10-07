@@ -42,7 +42,7 @@ const ContentArea = styled(Container)<Visibility>`
       ${({ theme }) => theme.modalWindow.contentArea.boxShadow.inset.spreadRadius}
       ${({ theme }) => theme.modalWindow.contentArea.boxShadow.inset.color};
   border-radius: 2.5rem;
-  padding: calc(var(--btn-size) * 1.5);
+  padding: calc(var(--btn-size) + 1.5rem + 0.25rem) 0.25rem;
   position: relative;
   animation: ${({ isVisible }) =>
     isVisible

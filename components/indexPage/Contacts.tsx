@@ -112,7 +112,7 @@ const Contact = ({ icon: Icon, title, url }: ContactProps) => {
 
 const Contacts = () => {
   return (
-    <Container alignItems={'flex-start'} rowGap={'1rem'}>
+    <Container alignItems={'flex-start'} rowGap={'1rem'} paddingX={['3rem', '4rem', '4.5rem']}>
       {contacts.map((contact) => (
         <Contact key={contact.url} {...contact} />
       ))}

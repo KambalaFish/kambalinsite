@@ -14,6 +14,7 @@ interface CarouselProps {
   height: string | string[];
   stylesForCarouselContainer?: CSSProp;
   onSlideClick?: () => void;
+  pointerEvents?: 'auto' | 'none';
 }
 
 const Carousel = ({
@@ -24,9 +25,8 @@ const Carousel = ({
   onSlideClick,
   curIndex,
   setCurIndex,
+  pointerEvents = 'auto',
 }: CarouselProps): React.ReactElement => {
-  // const [curIndex, setCurIndex] = useState(0);
-
   const carouselChildren = React.Children.map(children, (child, index) => {
     const styles =
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -86,7 +86,13 @@ const Carousel = ({
         alignItems={'center'}
         // border={'3px dotted green'}
       >
-        <LeftArrow onClick={onPrev} isVisible={curIndex !== 0} />
+        <LeftArrow
+          onClick={onPrev}
+          isVisible={curIndex !== 0}
+          css={`
+            pointer-events: ${pointerEvents};
+          `}
+        />
         <Container
           width={width}
           height={height}
@@ -101,13 +107,16 @@ const Carousel = ({
         <RightArrow
           onClick={onNext}
           isVisible={curIndex !== children.length - 1 && children.length > 1}
+          css={`
+            pointer-events: ${pointerEvents};
+          `}
         />
       </Container>
       <Container
         flexDirection={'row'}
         justifyContent={'center'}
         columnGap={'0.5rem'}
-        padding={'0.25rem 0'}
+        padding={'0.5rem 0'}
         // width={'100%'}
         onClick={onIndicator}
       >

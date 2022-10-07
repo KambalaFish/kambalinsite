@@ -56,7 +56,7 @@ const Projects: NextPage = () => {
       <Head>
         <title>Проекты</title>
       </Head>
-      <Container maxWidth={'100%'}>
+      <Container maxWidth={'100%'} minHeight={'100vh'}>
         <Container>
           <Title>Проекты</Title>
           <Text width={['30ch', '40ch', 'auto']}>
@@ -86,6 +86,7 @@ const Projects: NextPage = () => {
               setModalOpen(true);
               setIsZavodModalChildOpen(true);
             }}
+            pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
           >
             <Image
               src={'/projects/slide-1.png'}

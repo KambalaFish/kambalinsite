@@ -119,6 +119,9 @@ const Carousel = ({
         padding={'0.5rem 0'}
         // width={'100%'}
         onClick={onIndicator}
+        css={`
+          pointer-events: ${pointerEvents};
+        `}
       >
         {indicators}
       </Container>

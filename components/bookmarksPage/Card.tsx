@@ -19,17 +19,15 @@ interface CardProps {
 }
 
 const cardLoader = customLoader({ format: 'auto' });
-const captionHeight = `calc(3 * 1.1 * 1rem + 0.25rem + 1.5rem)`;
+const captionTextHeight = `calc(0.25rem + 2 * 1.1 * 1rem)`;
+const captionHeight = `calc(${captionTextHeight} + 1.5rem + 0.5rem)`;
 
-const StyledCalendar = styled(Calendar)``;
-const AdaptiveCalendar = styled.span`
-  ${StyledCalendar} {
-    height: 1.5em;
-    width: 1.5em;
-    ${minDeviceMedia.tablet} {
-      height: 1.25rem;
-      width: 1.25em;
-    }
+const StyledCalendar = styled(Calendar)`
+  height: 1.5em;
+  width: 1.5em;
+  ${minDeviceMedia.tablet} {
+    height: 1.25em;
+    width: 1.25em;
   }
 `;
 
@@ -99,6 +97,7 @@ const Card = ({
           padding={'0.25rem 1rem 0rem'}
           fontWeight={300}
           fontSize={'1rem'}
+          height={captionTextHeight}
         >
           {title}
         </Text>
@@ -110,9 +109,7 @@ const Card = ({
           marginBottom={'0.5rem'}
           columnGap={'0.4rem'}
         >
-          <AdaptiveCalendar>
-            <StyledCalendar />
-          </AdaptiveCalendar>
+          <StyledCalendar />
           <Text lineHeight={1} fontWeight={300} margin={0} fontSize={'0.9rem'}>
             {getFormattedDate(new Date(date))}
           </Text>

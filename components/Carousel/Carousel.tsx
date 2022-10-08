@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Container from '../Container';
 import { CarouselTrack } from './CarouselTrack';
 import { LeftArrow, RightArrow } from './Arrows';
@@ -27,26 +27,52 @@ const Carousel = ({
   setCurIndex,
   pointerEvents = 'auto',
 }: CarouselProps): React.ReactElement => {
-  const carouselChildren = React.Children.map(children, (child, index) => {
+  const [rect, setMeasuredRect] = useState({ measuredWidth: 0, measuredHeight: 0 });
+  const carouselTrackContainerRef = useCallback((node: HTMLDivElement) => {
+    if (node !== null) {
+      const { width: measuredWidth, height: measuredHeight } = node.getBoundingClientRect();
+      setMeasuredRect({
+        measuredWidth,
+        measuredHeight,
+      });
+    }
+  }, []);
+
+  const carouselSlides: React.ReactElement[] = [];
+  const indicators: React.ReactElement[] = [];
+
+  React.Children.forEach<React.ReactElement>(children, (child, index) => {
+    const key = child.key || index;
     const styles =
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      child.type.default?.name === 'Image'
-        ? {}
+      Object.prototype.hasOwnProperty.call(child.props, 'fill') ||
+      Object.prototype.hasOwnProperty.call(child.props, 'width')
+        ? null
         : {
-            width: width,
-            height: height,
+            width: rect.measuredWidth,
+            height: rect.measuredHeight,
           };
 
-    return (
-      <CarouselSlide key={child.key || index} width={width} height={height}>
-        {React.cloneElement(child, {
-          style: styles,
-        })}
-        {/*{child}*/}
+    carouselSlides.push(
+      <CarouselSlide
+        key={key}
+        width={`${rect.measuredWidth}px`}
+        height={`${rect.measuredHeight}px`}
+      >
+        {!styles
+          ? child
+          : React.cloneElement(child, {
+              style: styles,
+            })}
       </CarouselSlide>
     );
+
+    /*One imperfectness of the carousel:
+    if we add one new child element in beginning of children array,
+    then curIndex will shift one position away from the actual currentElement.
+    But I will leave it as is for now :)
+    */
+
+    indicators.push(<Indicator isCurrent={curIndex === index} key={key} />);
   });
 
   const onNext = () => {
@@ -69,22 +95,16 @@ const Carousel = ({
     setCurIndex(targetIndex);
   };
 
-  const indicators = React.Children.map(children, (child, index) => (
-    <Indicator isCurrent={curIndex === index} key={child.key || index} />
-  ));
+  if (carouselSlides.length === 0) return <></>;
 
-  if (!carouselChildren) return <></>;
   return (
-    <Container
-      width={'100%'}
-      // border={'2px dashed blue'}
-    >
+    <Container width={'100%'} height={'100%'}>
       <Container
         width={'100%'}
+        height={'100%'}
         flexDirection={'row'}
         justifyContent={'center'}
         alignItems={'center'}
-        // border={'3px dotted green'}
       >
         <LeftArrow
           onClick={onPrev}
@@ -96,12 +116,13 @@ const Carousel = ({
         <Container
           width={width}
           height={height}
+          ref={carouselTrackContainerRef}
           overflow={'hidden'}
           css={stylesForCarouselContainer}
           onClick={onSlideClick}
         >
-          <CarouselTrack curIndex={curIndex} widthOfSlide={width}>
-            {carouselChildren}
+          <CarouselTrack curIndex={curIndex} widthOfSlide={`${rect.measuredWidth}px`}>
+            {carouselSlides}
           </CarouselTrack>
         </Container>
         <RightArrow
@@ -117,7 +138,7 @@ const Carousel = ({
         justifyContent={'center'}
         columnGap={'0.5rem'}
         padding={'0.5rem 0'}
-        // width={'100%'}
+        width={'100%'}
         onClick={onIndicator}
         css={`
           pointer-events: ${pointerEvents};

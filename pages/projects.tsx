@@ -16,7 +16,9 @@ const Projects: NextPage = () => {
     <Carousel
       curIndex={curIndexZavodProject}
       setCurIndex={setCurIndexZavodProject}
-      width={['23rem', '32rem', '52.5rem', '55rem', '70rem']}
+      width={'80%'}
+      // height={'max-content'}
+      // width={['23rem', '32rem', '52.5rem', '55rem', '70rem']}
       height={['25rem', '32rem', '30rem', '35rem', '40rem']}
     >
       <Image
@@ -69,7 +71,7 @@ const Projects: NextPage = () => {
       <Head>
         <title>Проекты</title>
       </Head>
-      <Container maxWidth={'100%'} minHeight={'100vh'}>
+      <Container minHeight={'100vh'}>
         <Container>
           <Title>Проекты</Title>
           <Text width={['30ch', '40ch', 'auto']}>
@@ -80,12 +82,12 @@ const Projects: NextPage = () => {
             .
           </Text>
         </Container>
-        <Container width={'100%'}>
+        <Container width={'50rem'}>
           <Carousel
             curIndex={curIndexZavodProject}
             setCurIndex={setCurIndexZavodProject}
-            width={'300px'}
-            height={'300px'}
+            width={'65%'}
+            height={'20rem'}
             stylesForCarouselContainer={css`
               border-radius: 10%;
               cursor: pointer;
@@ -109,8 +111,9 @@ const Projects: NextPage = () => {
               `}
               alt={'zavod1'}
               quality={100}
-              sizes={'100vw'}
+              // sizes={'100vw'}
               fill
+              priority
             />
             <Image
               key={'/projects/slide-2.webp'}
@@ -120,7 +123,6 @@ const Projects: NextPage = () => {
               `}
               alt={'zavod2'}
               quality={100}
-              sizes={'100vw'}
               fill
             />
             <Image
@@ -131,7 +133,6 @@ const Projects: NextPage = () => {
               `}
               alt={'zavod3'}
               quality={100}
-              sizes={'100vw'}
               fill
             />
           </Carousel>
@@ -139,7 +140,7 @@ const Projects: NextPage = () => {
         <ModalWindow
           isVisible={isModalOpen}
           setModalVisibility={setModalOpen}
-          contentAreaWidth={['100%', '100%', '95%', '80%']}
+          contentAreaWidth={['95vw', '95vw', '90vw', '85vw']}
           onCloseCb={() => {
             if (isZavodModalChildOpen) {
               setIsZavodModalChildOpen(false);

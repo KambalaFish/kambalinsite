@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import Container from '../Container';
 import { CarouselTrack } from './CarouselTrack';
 import { LeftArrow, RightArrow } from './Arrows';
 import { Indicator } from './Indicator';
 import { CarouselSlide } from './CarouselSlide';
 import { CSSProp } from 'styled-components';
+import { useMeasure } from '@hooks';
 
 interface CarouselProps {
   children: React.ReactElement[];
@@ -27,16 +28,8 @@ const Carousel = ({
   setCurIndex,
   pointerEvents = 'auto',
 }: CarouselProps): React.ReactElement => {
-  const [rect, setMeasuredRect] = useState({ measuredWidth: 0, measuredHeight: 0 });
-  const carouselTrackContainerRef = useCallback((node: HTMLDivElement) => {
-    if (node !== null) {
-      const { width: measuredWidth, height: measuredHeight } = node.getBoundingClientRect();
-      setMeasuredRect({
-        measuredWidth,
-        measuredHeight,
-      });
-    }
-  }, []);
+  const [carouselTrackContainerRef, carouselTrackContainerRect] = useMeasure<HTMLDivElement>();
+  const [indicatorsContainerRef, indicatorsContainerRect] = useMeasure<HTMLDivElement>();
 
   const carouselSlides: React.ReactElement[] = [];
   const indicators: React.ReactElement[] = [];
@@ -48,15 +41,14 @@ const Carousel = ({
       Object.prototype.hasOwnProperty.call(child.props, 'width')
         ? null
         : {
-            width: rect.measuredWidth,
-            height: rect.measuredHeight,
+            ...carouselTrackContainerRect,
           };
 
     carouselSlides.push(
       <CarouselSlide
         key={key}
-        width={`${rect.measuredWidth}px`}
-        height={`${rect.measuredHeight}px`}
+        width={`${carouselTrackContainerRect.width}px`}
+        height={`${carouselTrackContainerRect.height}px`}
       >
         {!styles
           ? child
@@ -71,7 +63,6 @@ const Carousel = ({
     then curIndex will shift one position away from the actual currentElement.
     But I will leave it as is for now :)
     */
-
     indicators.push(<Indicator isCurrent={curIndex === index} key={key} />);
   });
 
@@ -98,10 +89,10 @@ const Carousel = ({
   if (carouselSlides.length === 0) return <></>;
 
   return (
-    <Container width={'100%'} height={'100%'}>
+    <Container width={'100%'} height={'100%'} justifyContent={'flex-start'}>
       <Container
         width={'100%'}
-        height={'100%'}
+        height={`calc(100% - ${indicatorsContainerRect.height}px)`}
         flexDirection={'row'}
         justifyContent={'center'}
         alignItems={'center'}
@@ -121,7 +112,7 @@ const Carousel = ({
           css={stylesForCarouselContainer}
           onClick={onSlideClick}
         >
-          <CarouselTrack curIndex={curIndex} widthOfSlide={`${rect.measuredWidth}px`}>
+          <CarouselTrack curIndex={curIndex} widthOfSlide={`${carouselTrackContainerRect.width}px`}>
             {carouselSlides}
           </CarouselTrack>
         </Container>
@@ -134,6 +125,7 @@ const Carousel = ({
         />
       </Container>
       <Container
+        ref={indicatorsContainerRef}
         flexDirection={'row'}
         justifyContent={'center'}
         columnGap={'0.5rem'}

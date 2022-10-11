@@ -3,9 +3,10 @@ import Head from 'next/head';
 import { Container, ModalWindow, Text, Title, Carousel } from '@components';
 import Image from 'next/future/image';
 import React, { useState } from 'react';
-import { css } from 'styled-components';
 import { StyledLink } from '@components/projectsPage';
 import { minDeviceMedia } from '@styles/theme';
+import { ProjectCard } from '@components/projectsPage';
+import { css } from 'styled-components';
 
 const Projects: NextPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -16,10 +17,8 @@ const Projects: NextPage = () => {
     <Carousel
       curIndex={curIndexZavodProject}
       setCurIndex={setCurIndexZavodProject}
-      width={'80%'}
-      // height={'max-content'}
-      // width={['23rem', '32rem', '52.5rem', '55rem', '70rem']}
-      height={['25rem', '32rem', '30rem', '35rem', '40rem']}
+      width={'calc(100% - 1.75rem * 2 - 1rem * 2)'}
+      height={['25rem', '28rem', '30rem', '35rem', '40rem']}
     >
       <Image
         key={'/projects/slide-1.png'}
@@ -32,7 +31,6 @@ const Projects: NextPage = () => {
         `}
         alt={'zavod1'}
         quality={100}
-        sizes={'100vw'}
         fill
       />
       <Image
@@ -46,7 +44,6 @@ const Projects: NextPage = () => {
         `}
         alt={'zavod2'}
         quality={100}
-        sizes={'100vw'}
         fill
       />
       <Image
@@ -57,6 +54,62 @@ const Projects: NextPage = () => {
           ${minDeviceMedia.tablet} {
             object-fit: scale-down;
           }
+        `}
+        alt={'zavod3'}
+        quality={100}
+        fill
+      />
+    </Carousel>
+  );
+
+  const zavodCardCarousel = (
+    <Carousel
+      curIndex={curIndexZavodProject}
+      setCurIndex={setCurIndexZavodProject}
+      width={'calc(100% - 1.75rem * 2)'}
+      height={'100%'}
+      stylesForCarouselContainer={css`
+        border-radius: 15% / 10%;
+        cursor: pointer;
+        :hover {
+          scale: 1.01;
+          transition: scale 0.4s linear;
+        }
+        transition: scale 0.4s linear;
+      `}
+      onSlideClick={() => {
+        setModalOpen(true);
+        setIsZavodModalChildOpen(true);
+      }}
+      pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
+    >
+      <Image
+        key={'/projects/slide-1.png'}
+        src={'/projects/slide-1.png'}
+        css={`
+          object-fit: cover;
+        `}
+        alt={'zavod1'}
+        quality={100}
+        sizes={'100vw'}
+        fill
+      />
+      <Image
+        key={'/projects/slide-2.png'}
+        src={'/projects/slide-2.webp'}
+        css={`
+          object-fit: cover;
+        `}
+        alt={'zavod2'}
+        quality={100}
+        sizes={'100vw'}
+        fill
+      />
+      <Image
+        key={'/projects/slide-3.png'}
+        src={'/projects/slide-3.png'}
+        css={`
+          object-fit: cover;
         `}
         alt={'zavod3'}
         quality={100}
@@ -71,7 +124,7 @@ const Projects: NextPage = () => {
       <Head>
         <title>Проекты</title>
       </Head>
-      <Container minHeight={'100vh'}>
+      <Container minHeight={'100vh'} width={'100%'}>
         <Container>
           <Title>Проекты</Title>
           <Text width={['30ch', '40ch', 'auto']}>
@@ -82,65 +135,32 @@ const Projects: NextPage = () => {
             .
           </Text>
         </Container>
-        <Container width={'50rem'}>
-          <Carousel
-            curIndex={curIndexZavodProject}
-            setCurIndex={setCurIndexZavodProject}
-            width={'65%'}
-            height={'20rem'}
-            stylesForCarouselContainer={css`
-              border-radius: 10%;
-              cursor: pointer;
-              :hover {
-                scale: 1.01;
-                transition: scale 0.4s linear;
-              }
-              transition: scale 0.4s linear;
-            `}
-            onSlideClick={() => {
-              setModalOpen(true);
-              setIsZavodModalChildOpen(true);
-            }}
-            pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
-          >
-            <Image
-              key={'/projects/slide-1.png'}
-              src={'/projects/slide-1.png'}
-              css={`
-                object-fit: cover;
-              `}
-              alt={'zavod1'}
-              quality={100}
-              // sizes={'100vw'}
-              fill
-              priority
-            />
-            <Image
-              key={'/projects/slide-2.webp'}
-              src={'/projects/slide-2.webp'}
-              css={`
-                object-fit: cover;
-              `}
-              alt={'zavod2'}
-              quality={100}
-              fill
-            />
-            <Image
-              key={'/projects/slide-3.png'}
-              src={'/projects/slide-3.png'}
-              css={`
-                object-fit: cover;
-              `}
-              alt={'zavod3'}
-              quality={100}
-              fill
-            />
-          </Carousel>
+
+        <Container width={'100%'} rowGap={'2rem'}>
+          <ProjectCard
+            projectName={'Завод'}
+            carousel={zavodCardCarousel}
+            tabs={[
+              { tabName: 'описание', tabContent: <>Описание</> },
+              { tabName: 'предыстория', tabContent: <>Предыстория</> },
+              { tabName: 'технологии', tabContent: <>Технологии</> },
+            ]}
+          />
+          <ProjectCard
+            projectName={'Тусафайндер'}
+            carousel={zavodCardCarousel}
+            tabs={[
+              { tabName: 'описание', tabContent: <>ABHUI</> },
+              { tabName: 'предыстория', tabContent: <>AVHUI</> },
+              { tabName: 'технологии', tabContent: <>AVEKRENDEL</> },
+            ]}
+          />
         </Container>
+
         <ModalWindow
           isVisible={isModalOpen}
           setModalVisibility={setModalOpen}
-          contentAreaWidth={['95vw', '95vw', '90vw', '85vw']}
+          contentAreaWidth={['90vw', '95vw', '90vw', '85vw']}
           onCloseCb={() => {
             if (isZavodModalChildOpen) {
               setIsZavodModalChildOpen(false);

@@ -13,6 +13,8 @@ import {
   PositionProps,
   boxShadow,
   BoxShadowProps,
+  gridArea,
+  GridAreaProps,
 } from 'styled-system';
 
 type ContainerPropsStyledSystem = FlexboxProps &
@@ -20,7 +22,8 @@ type ContainerPropsStyledSystem = FlexboxProps &
   BorderProps &
   LayoutProps &
   PositionProps &
-  BoxShadowProps;
+  BoxShadowProps &
+  GridAreaProps;
 
 type CustomContainerProps = {
   rowGap?: string;
@@ -36,7 +39,7 @@ const Container = styled.div<ContainerProps>`
   align-items: center;
   row-gap: ${({ rowGap }) => rowGap};
   column-gap: ${({ columnGap }) => columnGap};
-  ${compose(flexbox, space, border, layout, position, boxShadow)};
+  ${compose(flexbox, space, border, layout, position, boxShadow, gridArea)};
 `;
 
 export default Container;

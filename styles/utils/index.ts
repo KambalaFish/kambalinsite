@@ -1,1 +1,1 @@
-export { showHide } from './showHide';
+export { showHide, showHideTransition } from './showHide';

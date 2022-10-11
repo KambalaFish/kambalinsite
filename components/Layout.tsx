@@ -42,7 +42,7 @@ const Layout = ({ children, themeToggle }: LayoutProps) => (
           'calc(100vw - 5vw * 2 - 1.5rem - 16ch - 0.625rem * 2 - 17ch - 0.625rem * 2 - 2rem)',
         ]}
         my={'3rem'}
-        mx={['calc(2.4rem + 0.25rem)', 'calc(0.5rem + 2.4rem)', 'auto']}
+        mx={['calc(2.4rem + 0.25rem * 2)', 'calc(2.4rem + 0.5rem * 2)', 'auto']}
         alignContent={'center'}
       >
         {children}

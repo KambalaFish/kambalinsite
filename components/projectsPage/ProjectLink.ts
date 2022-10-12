@@ -4,9 +4,11 @@ const ProjectLink = styled.a`
   display: inline-block;
   cursor: pointer;
   padding: 0.5rem 1.25rem;
-  background-image: linear-gradient(to left, salmon 35%, lightblue 65%);
+  background-image: linear-gradient(300deg, salmon 35%, lightblue 65%);
   background-position: right;
   background-size: 300% 100%;
+  background-origin: border-box;
+  background-repeat: no-repeat;
   transition: background-position 0.6s ease-out, color 0.6s ease-out, box-shadow 0.6s ease-out;
   border-radius: 10% / 50%;
   overflow: hidden;

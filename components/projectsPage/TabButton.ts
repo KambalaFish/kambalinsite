@@ -17,12 +17,18 @@ const TabButton = styled.button<TabButtonProps>`
   font-size: 1rem;
   line-height: 1;
   font-weight: 500;
-  transition: background-color 0.5s ease-out, transform 0.5s ease-out;
+  transition: background-color 0.5s ease-out, transform 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0.75;
+  :hover {
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+  }
   ${({ isCurrent }) => {
     if (isCurrent) {
       return css`
         background-color: rgb(255, 10, 50);
         transform: scale(1.05);
+        opacity: 1;
       `;
     }
   }}

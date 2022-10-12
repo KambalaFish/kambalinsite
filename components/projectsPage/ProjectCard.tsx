@@ -3,6 +3,8 @@ import { TabButton } from './TabButton';
 import { showHide, showHideTransition } from '@styles/utils';
 import React, { useState } from 'react';
 import { css } from 'styled-components';
+import { ProjectLink } from './ProjectLink';
+import { VscGithubInverted } from '@react-icons/all-files/vsc/VscGithubInverted';
 
 interface ProjectCardProps {
   projectName: string;
@@ -11,9 +13,17 @@ interface ProjectCardProps {
     tabName: string;
     tabContent: React.ReactElement;
   }>;
+  projectLink?: string;
+  gitHubLink: string;
 }
 
-const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
+const ProjectCard = ({
+  projectName,
+  carousel,
+  tabs,
+  projectLink,
+  gitHubLink,
+}: ProjectCardProps) => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const onTabButton = (event: React.MouseEvent) => {
@@ -34,10 +44,7 @@ const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
       left={'0'}
       css={css`
         ${showHide(currentTab === index)}
-        ${showHideTransition(
-          600,
-          'ease-in-out'
-        )} //transition: visibility 600ms, opacity 600ms ease-out;
+        ${showHideTransition(600, 'ease-in-out')}
       `}
     >
       {tabContent}
@@ -55,9 +62,9 @@ const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
       width={'100%'}
       gridTemplateColumns={['100%', '100%', 'minmax(25rem, 1fr) 3fr']}
       gridTemplateAreas={[
-        "'projName' 'carousel' 'contentArea' 'tabButtons'",
-        "'projName' 'carousel' 'contentArea' 'tabButtons'",
-        "'tabButtons projName' 'carousel contentArea'",
+        "'projName' 'carousel' 'extraInfo' 'contentArea' 'tabButtons'",
+        "'projName' 'carousel' 'extraInfo' 'contentArea' 'tabButtons'",
+        "'tabButtons projName' 'carousel contentArea' 'extraInfo contentArea'",
       ]}
     >
       <Container
@@ -74,10 +81,9 @@ const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
           `inset 0rem -0.1rem 0.5rem 0rem rgb(235, 128, 32)`,
           `inset 0rem -0.1rem 0.5rem 0rem rgb(235, 128, 32)`,
           `inset 0rem 0.15rem 0.3rem 0rem rgb(255, 125, 125)`,
-          // `inset 0.1rem 0.1rem 0.25rem 0rem rgb(255, 125, 125)`,
         ]}
         css={`
-          background-color: rgb(12, 12, 12);
+          background-color: rgb(4, 4, 4);
         `}
         onClick={onTabButton}
       >
@@ -104,13 +110,7 @@ const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
           background-color: rgb(0, 0, 0);
         `}
       >
-        <Title
-          // color={'rgb(235, 128, 32)'}
-          color={'rgb(235, 128, 32)'}
-          fontSize={'3rem'}
-          lineHeight={'1'}
-          margin={'0 1rem 0 0'}
-        >
+        <Title color={'rgb(235, 128, 32)'} fontSize={'3rem'} lineHeight={'1'} margin={'0 1rem 0 0'}>
           {projectName}
         </Title>
       </Container>
@@ -121,7 +121,6 @@ const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
         justifyContent={'center'}
         gridArea={'carousel'}
         paddingY={'1rem'}
-        borderBottomLeftRadius={['0', '0', '1.5rem']}
         css={`
           background-color: rgb(0, 0, 0);
         `}
@@ -135,13 +134,51 @@ const ProjectCard = ({ projectName, carousel, tabs }: ProjectCardProps) => {
         justifyContent={'center'}
         gridArea={'contentArea'}
         position={'relative'}
-        borderBottomRightRadius={['0', '0', '1.5rem']}
         overflow={'hidden'}
+        borderBottomRightRadius={['0', '0', '2rem']}
+        boxShadow={['0', '0', 'inset -0.05rem -0.05rem 0.1rem 0 rgb(255, 192, 32)']}
         css={`
-          background-color: rgb(4, 4, 16);
+          background-color: rgb(4, 4, 32);
         `}
       >
         {tabsContent}
+      </Container>
+
+      <Container
+        gridArea={'extraInfo'}
+        flexDirection={'row'}
+        justifyContent={'center'}
+        padding={'0.75rem 0'}
+        borderBottomLeftRadius={['0', '0', '1.5rem']}
+        columnGap={'1rem'}
+        boxShadow={['0', '0', 'inset 0rem 0rem 0.25rem 0 rgb(235, 128, 32)']}
+        css={`
+          background-color: rgba(235, 128, 32, 0.05);
+        `}
+        borderRight={'0.1rem solid rgb(235, 128, 32)'}
+        borderLeft={'0.1rem solid rgb(235, 128, 32)'}
+      >
+        {projectLink && (
+          <ProjectLink href={projectLink} target={'_blank'} rel='noreferrer'>
+            попробовать
+          </ProjectLink>
+        )}
+        <a
+          css={`
+            cursor: pointer;
+            color: rgb(64, 220, 128);
+            transition: color 0.4s ease-in;
+            :hover {
+              color: rgb(255, 255, 255);
+              transition: color 0.6s ease-out;
+            }
+          `}
+          href={gitHubLink}
+          target={'_blank'}
+          rel='noreferrer'
+        >
+          <VscGithubInverted size={'2rem'} />
+        </a>
       </Container>
     </Grid>
   );

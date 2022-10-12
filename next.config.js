@@ -34,11 +34,11 @@ if (process.env.ANALYZE){
   const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: true
   });
-  module.exports = withBundleAnalyzer({ ...nextConfig });
+  return module.exports = withBundleAnalyzer({ ...nextConfig });
 }
 
 if (process.env.isProd==='true') {
-  module.exports = nextConfigProd;
+  return module.exports = nextConfigProd;
 } else {
-  module.exports = nextConfig;
+  return module.exports = nextConfig;
 }

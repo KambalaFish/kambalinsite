@@ -124,7 +124,7 @@ const Projects: NextPage = () => {
       <Head>
         <title>Проекты</title>
       </Head>
-      <Container minHeight={'100vh'} width={'100%'}>
+      <Container minHeight={'100vh'} width={'100%'} rowGap={'2rem'}>
         <Container>
           <Title>Проекты</Title>
           <Text width={['30ch', '40ch', 'auto']}>
@@ -136,7 +136,7 @@ const Projects: NextPage = () => {
           </Text>
         </Container>
 
-        <Container width={'100%'} rowGap={'2rem'}>
+        <Container width={'100%'} rowGap={'4rem'}>
           <ProjectCard
             projectName={'Завод'}
             carousel={zavodCardCarousel}

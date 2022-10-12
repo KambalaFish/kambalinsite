@@ -66,6 +66,11 @@ const ProjectCard = ({
         "'projName' 'carousel' 'extraInfo' 'contentArea' 'tabButtons'",
         "'tabButtons projName' 'carousel contentArea' 'extraInfo contentArea'",
       ]}
+      gridTemplateRows={[
+        '3.5rem 20rem 3.5rem 20rem 3.5rem',
+        '3.5rem 22.5rem 3.5rem 20rem 3.5rem',
+        '3.5rem 25rem 3.5rem',
+      ]}
     >
       <Container
         height={'100%'}
@@ -73,7 +78,7 @@ const ProjectCard = ({
         gridArea={'tabButtons'}
         flexDirection={'row'}
         columnGap={'0.5rem'}
-        padding={['0.75rem', '1rem', '0']}
+        padding={'0'}
         borderTopLeftRadius={['0', '0', '1.5rem']}
         borderBottomLeftRadius={['1.5rem', '1.5rem', '0']}
         borderBottomRightRadius={['1.5rem', '1.5rem', '0']}
@@ -129,8 +134,8 @@ const ProjectCard = ({
       </Container>
 
       <Container
+        height={'100%'}
         width={'100%'}
-        height={['20rem', '20rem', '100%']}
         justifyContent={'center'}
         gridArea={'contentArea'}
         position={'relative'}
@@ -145,10 +150,10 @@ const ProjectCard = ({
       </Container>
 
       <Container
+        height={'100%'}
         gridArea={'extraInfo'}
         flexDirection={'row'}
         justifyContent={'center'}
-        padding={'0.75rem 0'}
         borderBottomLeftRadius={['0', '0', '1.5rem']}
         columnGap={'1rem'}
         boxShadow={['0', '0', 'inset 0rem 0rem 0.25rem 0 rgb(235, 128, 32)']}

@@ -145,15 +145,18 @@ const Projects: NextPage = () => {
               { tabName: 'предыстория', tabContent: <>Предыстория</> },
               { tabName: 'технологии', tabContent: <>Технологии</> },
             ]}
+            projectLink={'https://zavod.kambalin.ru'}
+            gitHubLink={'https://github.com/KambalaFish/SmartEnterprise'}
           />
           <ProjectCard
-            projectName={'Тусафайндер'}
+            projectName={'Туса-файндер'}
             carousel={zavodCardCarousel}
             tabs={[
               { tabName: 'описание', tabContent: <>ABHUI</> },
               { tabName: 'предыстория', tabContent: <>AVHUI</> },
               { tabName: 'технологии', tabContent: <>AVEKRENDEL</> },
             ]}
+            gitHubLink={'https://github.com/ToosaFinder/toosa-finder-frontend'}
           />
         </Container>
 

@@ -1,10 +1,10 @@
 import { Container, Grid, Title } from '@components';
 import { TabButton } from './TabButton';
-import { showHide, showHideTransition } from '@styles/utils';
 import React, { useState } from 'react';
 import { css } from 'styled-components';
 import { ProjectLink } from './ProjectLink';
 import { VscGithubInverted } from '@react-icons/all-files/vsc/VscGithubInverted';
+import { minDeviceMedia } from '@styles/theme';
 
 interface ProjectCardProps {
   projectName: string;
@@ -34,19 +34,14 @@ const ProjectCard = ({
     setCurrentTab(targetIndex);
   };
 
-  const tabsContent = tabs.map(({ tabContent, tabName }, index) => (
+  const tabsContent = tabs.map(({ tabContent, tabName }) => (
     <Container
       key={tabName}
-      height={'100%'}
+      height={['20rem', '20rem', '28.5rem']}
       width={'100%'}
-      position={'absolute'}
-      top={'0'}
-      left={'0'}
       overflowY={'auto'}
       overflowX={'hidden'}
       css={css`
-        ${showHide(currentTab === index)}
-        ${showHideTransition(400, 'ease-in-out')}
         &::-webkit-scrollbar-button {
           display: none;
         }
@@ -144,9 +139,8 @@ const ProjectCard = ({
       <Container
         height={'100%'}
         width={'100%'}
-        justifyContent={'center'}
+        justifyContent={'flex-start'}
         gridArea={'contentArea'}
-        position={'relative'}
         overflow={'hidden'}
         borderBottomRightRadius={['0', '0', '2rem']}
         boxShadow={['0', '0', 'inset -0.05rem -0.05rem 0.1rem 0 rgb(255, 192, 32)']}
@@ -154,7 +148,19 @@ const ProjectCard = ({
           background-color: rgb(0, 0, 64);
         `}
       >
-        {tabsContent}
+        <Container
+          width={'100%'}
+          flexDirection={'column'}
+          css={`
+            transform: translateY(calc(-1 * ${currentTab} * 20rem));
+            ${minDeviceMedia.tablet} {
+              transform: translateY(calc(-1 * ${currentTab} * 28.5rem));
+            }
+            transition: transform 0.5s ease-out;
+          `}
+        >
+          {tabsContent}
+        </Container>
       </Container>
 
       <Container

@@ -3,9 +3,14 @@ import Head from 'next/head';
 import { Container, ModalWindow, Text, Title, Carousel } from '@components';
 import Image from 'next/future/image';
 import React, { useState } from 'react';
-import { StyledLink } from '@components/projectsPage';
+import {
+  StyledLink,
+  ProjectCard,
+  ZavodDescription,
+  ZavodPrehistory,
+  ZavodTechnologies,
+} from '@components/projectsPage';
 import { minDeviceMedia } from '@styles/theme';
-import { ProjectCard } from '@components/projectsPage';
 import { css } from 'styled-components';
 
 const Projects: NextPage = () => {
@@ -141,9 +146,9 @@ const Projects: NextPage = () => {
             projectName={'Завод'}
             carousel={zavodCardCarousel}
             tabs={[
-              { tabName: 'описание', tabContent: <>Описание</> },
-              { tabName: 'предыстория', tabContent: <>Предыстория</> },
-              { tabName: 'технологии', tabContent: <>Технологии</> },
+              { tabName: 'описание', tabContent: ZavodDescription },
+              { tabName: 'предыстория', tabContent: ZavodPrehistory },
+              { tabName: 'технологии', tabContent: ZavodTechnologies },
             ]}
             projectLink={'https://zavod.kambalin.ru'}
             gitHubLink={'https://github.com/KambalaFish/SmartEnterprise'}

@@ -42,9 +42,17 @@ const ProjectCard = ({
       position={'absolute'}
       top={'0'}
       left={'0'}
+      overflowY={'auto'}
+      overflowX={'hidden'}
       css={css`
         ${showHide(currentTab === index)}
-        ${showHideTransition(600, 'ease-in-out')}
+        ${showHideTransition(400, 'ease-in-out')}
+        &::-webkit-scrollbar-button {
+          display: none;
+        }
+        &::-webkit-scrollbar {
+          width: 0.75rem;
+        }
       `}
     >
       {tabContent}
@@ -143,7 +151,7 @@ const ProjectCard = ({
         borderBottomRightRadius={['0', '0', '2rem']}
         boxShadow={['0', '0', 'inset -0.05rem -0.05rem 0.1rem 0 rgb(255, 192, 32)']}
         css={`
-          background-color: rgb(4, 4, 32);
+          background-color: rgb(0, 0, 64);
         `}
       >
         {tabsContent}
@@ -171,10 +179,10 @@ const ProjectCard = ({
         <a
           css={`
             cursor: pointer;
-            color: rgb(64, 220, 128);
+            color: salmon;
             transition: color 0.4s ease-in;
             :hover {
-              color: rgb(255, 255, 255);
+              color: lightblue;
               transition: color 0.6s ease-out;
             }
           `}

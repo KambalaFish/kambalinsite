@@ -1,8 +1,9 @@
 import { Container } from '@components';
 import { ContentAreaTitle } from './ProjectCard/ContentAreaTitle';
 import { TextStress, CardText, cardTab } from './ProjectCard/ContentAreaTypography';
+import { TabContentProps } from './ProjectCard/TabInterfaces';
 
-const ZavodDescription = () => (
+const ZavodDescription = (): React.ReactElement => (
   <Container paddingX={'0.5rem'}>
     <Container flexDirection={'row'} justifyContent={'center'}>
       <ContentAreaTitle>Описание</ContentAreaTitle>
@@ -21,11 +22,7 @@ const ZavodDescription = () => (
   </Container>
 );
 
-interface ZavodPrehistory {
-  setCurrentSlide: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const ZavodPrehistory = ({ setCurrentSlide }: ZavodPrehistory) => (
+const ZavodPrehistory = ({ setCurrentIndex }: TabContentProps): React.ReactElement => (
   <Container paddingX={'0.5rem'} width={'100%'}>
     <Container flexDirection={'row'} justifyContent={'center'}>
       <ContentAreaTitle>Предыстория</ContentAreaTitle>
@@ -34,7 +31,7 @@ const ZavodPrehistory = ({ setCurrentSlide }: ZavodPrehistory) => (
       alignItems={['center', 'center', 'flex-start']}
       justifyContent={'flex-start'}
       width={'100%'}
-      onClick={() => setCurrentSlide(1)}
+      onClick={() => setCurrentIndex(2)}
     >
       <CardText>
         {cardTab}Я делал этот проект в рамках дипломной работы. Спойлер: работа не была завершена до
@@ -62,7 +59,7 @@ const ZavodPrehistory = ({ setCurrentSlide }: ZavodPrehistory) => (
   </Container>
 );
 
-const ZavodTechnologies = () => (
+const ZavodTechnologies = (): React.ReactElement => (
   <Container>
     <Container flexDirection={'row'} justifyContent={'center'}>
       <ContentAreaTitle>Технологии</ContentAreaTitle>

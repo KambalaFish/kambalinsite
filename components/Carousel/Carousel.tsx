@@ -129,8 +129,9 @@ const Carousel = ({
         flexDirection={'row'}
         justifyContent={'center'}
         columnGap={'0.5rem'}
-        padding={'0.5rem 0'}
-        width={'100%'}
+        rowGap={'0.25rem'}
+        padding={'0.5rem 0 0'}
+        width={'75%'}
         onClick={onIndicator}
         css={`
           pointer-events: ${pointerEvents};

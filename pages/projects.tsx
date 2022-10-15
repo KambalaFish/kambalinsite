@@ -13,59 +13,25 @@ import {
 import { minDeviceMedia } from '@styles/theme';
 import { css } from 'styled-components';
 
-const Projects: NextPage = () => {
+import * as fs from 'fs';
+import path from 'path';
+
+interface ProjectPageProps {
+  zavodScreenshotPaths: string[];
+  tusafinderScreenshotPaths: string[];
+}
+
+const Projects: NextPage<ProjectPageProps> = ({
+  zavodScreenshotPaths,
+  tusafinderScreenshotPaths,
+}) => {
   const [isModalOpen, setModalOpen] = useState(false);
+
   const [curIndexZavodProject, setCurIndexZavodProject] = useState(0);
   const [isZavodModalChildOpen, setIsZavodModalChildOpen] = useState(false);
 
-  const zavodProjectModalChild = (
-    <Carousel
-      curIndex={curIndexZavodProject}
-      setCurIndex={setCurIndexZavodProject}
-      width={'calc(100% - 1.75rem * 2 - 1rem * 2)'}
-      height={['25rem', '28rem', '30rem', '35rem', '40rem']}
-    >
-      <Image
-        key={'/projects/slide-1.png'}
-        src={'/projects/slide-1.png'}
-        css={`
-          object-fit: cover;
-          ${minDeviceMedia.tablet} {
-            object-fit: scale-down;
-          }
-        `}
-        alt={'zavod1'}
-        quality={100}
-        fill
-      />
-      <Image
-        key={'/projects/slide-2.png'}
-        src={'/projects/slide-2.webp'}
-        css={`
-          object-fit: cover;
-          ${minDeviceMedia.tablet} {
-            object-fit: scale-down;
-          }
-        `}
-        alt={'zavod2'}
-        quality={100}
-        fill
-      />
-      <Image
-        key={'/projects/slide-3.png'}
-        src={'/projects/slide-3.png'}
-        css={`
-          object-fit: cover;
-          ${minDeviceMedia.tablet} {
-            object-fit: scale-down;
-          }
-        `}
-        alt={'zavod3'}
-        quality={100}
-        fill
-      />
-    </Carousel>
-  );
+  const [curIndexTusafinderProject, setCurIndexTusafinderProject] = useState(0);
+  const [isTusafinderModalChildOpen, setIsTusafinderModalChildOpen] = useState(false);
 
   const zavodCardCarousel = (
     <Carousel
@@ -88,39 +54,104 @@ const Projects: NextPage = () => {
       }}
       pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
     >
-      <Image
-        key={'/projects/slide-1.png'}
-        src={'/projects/slide-1.png'}
-        css={`
-          object-fit: cover;
-        `}
-        alt={'zavod1'}
-        quality={100}
-        sizes={'100vw'}
-        fill
-      />
-      <Image
-        key={'/projects/slide-2.png'}
-        src={'/projects/slide-2.webp'}
-        css={`
-          object-fit: cover;
-        `}
-        alt={'zavod2'}
-        quality={100}
-        sizes={'100vw'}
-        fill
-      />
-      <Image
-        key={'/projects/slide-3.png'}
-        src={'/projects/slide-3.png'}
-        css={`
-          object-fit: cover;
-        `}
-        alt={'zavod3'}
-        quality={100}
-        sizes={'100vw'}
-        fill
-      />
+      {zavodScreenshotPaths.map((path) => (
+        <Image
+          key={path}
+          src={path}
+          css={`
+            object-fit: cover;
+          `}
+          alt={'zavod'}
+          quality={100}
+          fill
+        />
+      ))}
+    </Carousel>
+  );
+
+  const zavodProjectModalChild = (
+    <Carousel
+      curIndex={curIndexZavodProject}
+      setCurIndex={setCurIndexZavodProject}
+      width={'calc(100% - 1.75rem * 2 - 1rem * 2)'}
+      height={['25rem', '28rem', '30rem', '35rem', '40rem']}
+    >
+      {zavodScreenshotPaths.map((path) => (
+        <Image
+          key={path}
+          src={path}
+          css={`
+            object-fit: cover;
+            ${minDeviceMedia.tablet} {
+              object-fit: scale-down;
+            }
+          `}
+          alt={path}
+          quality={100}
+          fill
+        />
+      ))}
+    </Carousel>
+  );
+
+  const tusafinderCardCarousel = (
+    <Carousel
+      curIndex={curIndexTusafinderProject}
+      setCurIndex={setCurIndexTusafinderProject}
+      width={'calc(100% - 1.75rem * 2)'}
+      height={'100%'}
+      stylesForCarouselContainer={css`
+        border-radius: 15% / 10%;
+        cursor: pointer;
+        :hover {
+          scale: 1.01;
+          transition: scale 0.4s linear;
+        }
+        transition: scale 0.4s linear;
+      `}
+      onSlideClick={() => {
+        setModalOpen(true);
+        setIsTusafinderModalChildOpen(true);
+      }}
+      pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
+    >
+      {tusafinderScreenshotPaths.map((path) => (
+        <Image
+          key={path}
+          src={path}
+          css={`
+            object-fit: cover;
+          `}
+          alt={'zavod'}
+          quality={100}
+          fill
+        />
+      ))}
+    </Carousel>
+  );
+
+  const tusafinderProjectModalChild = (
+    <Carousel
+      curIndex={curIndexTusafinderProject}
+      setCurIndex={setCurIndexTusafinderProject}
+      width={'calc(100% - 1.75rem * 2 - 1rem * 2)'}
+      height={['25rem', '28rem', '30rem', '35rem', '40rem']}
+    >
+      {tusafinderScreenshotPaths.map((path) => (
+        <Image
+          key={path}
+          src={path}
+          css={`
+            object-fit: cover;
+            ${minDeviceMedia.tablet} {
+              object-fit: scale-down;
+            }
+          `}
+          alt={path}
+          quality={100}
+          fill
+        />
+      ))}
     </Carousel>
   );
 
@@ -146,20 +177,23 @@ const Projects: NextPage = () => {
             projectName={'Завод'}
             carousel={zavodCardCarousel}
             tabs={[
-              { tabName: 'описание', tabContent: ZavodDescription },
-              { tabName: 'предыстория', tabContent: ZavodPrehistory },
-              { tabName: 'технологии', tabContent: ZavodTechnologies },
+              { tabName: 'описание', tabContent: <ZavodDescription /> },
+              {
+                tabName: 'предыстория',
+                tabContent: <ZavodPrehistory setCurrentSlide={setCurIndexZavodProject} />,
+              },
+              { tabName: 'технологии', tabContent: <ZavodTechnologies /> },
             ]}
             projectLink={'https://zavod.kambalin.ru'}
             gitHubLink={'https://github.com/KambalaFish/SmartEnterprise'}
           />
           <ProjectCard
             projectName={'Туса-файндер'}
-            carousel={zavodCardCarousel}
+            carousel={tusafinderCardCarousel}
             tabs={[
-              { tabName: 'описание', tabContent: <>ABHUI</> },
-              { tabName: 'предыстория', tabContent: <>AVHUI</> },
-              { tabName: 'технологии', tabContent: <>AVEKRENDEL</> },
+              { tabName: 'описание', tabContent: <>opisanie</> },
+              { tabName: 'предыстория', tabContent: <>predistoria</> },
+              { tabName: 'технологии', tabContent: <>technologii</> },
             ]}
             gitHubLink={'https://github.com/ToosaFinder/toosa-finder-frontend'}
           />
@@ -173,13 +207,40 @@ const Projects: NextPage = () => {
             if (isZavodModalChildOpen) {
               setIsZavodModalChildOpen(false);
             }
+            if (isTusafinderModalChildOpen) {
+              setIsTusafinderModalChildOpen(false);
+            }
           }}
         >
           {isZavodModalChildOpen && zavodProjectModalChild}
+          {isTusafinderModalChildOpen && tusafinderProjectModalChild}
         </ModalWindow>
       </Container>
     </>
   );
 };
+
+export function getStaticProps() {
+  const zavodDir = path.join(process.cwd(), 'public', 'projects', 'zavod');
+  const tusafinderDir = path.join(process.cwd(), 'public', 'projects', 'tusafinder');
+
+  const getFormattedImagePaths = (absoluteDirPath: string, relativeDirPath: string) => {
+    return fs
+      .readdirSync(absoluteDirPath)
+      .sort((a, b) => parseInt(a) - parseInt(b))
+      .map((zfn) => {
+        return `${relativeDirPath}${zfn}`;
+      });
+  };
+
+  const zavodScreenshotPaths = getFormattedImagePaths(zavodDir, '/projects/zavod/');
+  const tusafinderScreenshotPaths = getFormattedImagePaths(tusafinderDir, '/projects/tusafinder/');
+
+  console.log(zavodScreenshotPaths);
+
+  return {
+    props: { zavodScreenshotPaths, tusafinderScreenshotPaths },
+  };
+}
 
 export default Projects;

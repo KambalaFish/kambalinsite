@@ -1,17 +1,16 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Container, ModalWindow, Text, Title, Carousel } from '@components';
-import Image from 'next/future/image';
-import React, { useState } from 'react';
+import { Container, Text, Title } from '@components';
+import React from 'react';
 import {
   StyledLink,
   ProjectCard,
   ZavodDescription,
   ZavodPrehistory,
   ZavodTechnologies,
+  makeTabWithSetIndex,
+  makeTabWithoutSetIndex,
 } from '@components/projectsPage';
-import { minDeviceMedia } from '@styles/theme';
-import { css } from 'styled-components';
 
 import * as fs from 'fs';
 import path from 'path';
@@ -25,136 +24,6 @@ const Projects: NextPage<ProjectPageProps> = ({
   zavodScreenshotPaths,
   tusafinderScreenshotPaths,
 }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const [curIndexZavodProject, setCurIndexZavodProject] = useState(0);
-  const [isZavodModalChildOpen, setIsZavodModalChildOpen] = useState(false);
-
-  const [curIndexTusafinderProject, setCurIndexTusafinderProject] = useState(0);
-  const [isTusafinderModalChildOpen, setIsTusafinderModalChildOpen] = useState(false);
-
-  const zavodCardCarousel = (
-    <Carousel
-      curIndex={curIndexZavodProject}
-      setCurIndex={setCurIndexZavodProject}
-      width={'calc(100% - 1.75rem * 2)'}
-      height={'100%'}
-      stylesForCarouselContainer={css`
-        border-radius: 15% / 10%;
-        cursor: pointer;
-        :hover {
-          scale: 1.01;
-          transition: scale 0.4s linear;
-        }
-        transition: scale 0.4s linear;
-      `}
-      onSlideClick={() => {
-        setModalOpen(true);
-        setIsZavodModalChildOpen(true);
-      }}
-      pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
-    >
-      {zavodScreenshotPaths.map((path) => (
-        <Image
-          key={path}
-          src={path}
-          css={`
-            object-fit: cover;
-          `}
-          alt={'zavod'}
-          quality={100}
-          fill
-        />
-      ))}
-    </Carousel>
-  );
-
-  const zavodProjectModalChild = (
-    <Carousel
-      curIndex={curIndexZavodProject}
-      setCurIndex={setCurIndexZavodProject}
-      width={'calc(100% - 1.75rem * 2 - 1rem * 2)'}
-      height={['25rem', '28rem', '30rem', '35rem', '40rem']}
-    >
-      {zavodScreenshotPaths.map((path) => (
-        <Image
-          key={path}
-          src={path}
-          css={`
-            object-fit: cover;
-            ${minDeviceMedia.tablet} {
-              object-fit: scale-down;
-            }
-          `}
-          alt={path}
-          quality={100}
-          fill
-        />
-      ))}
-    </Carousel>
-  );
-
-  const tusafinderCardCarousel = (
-    <Carousel
-      curIndex={curIndexTusafinderProject}
-      setCurIndex={setCurIndexTusafinderProject}
-      width={'calc(100% - 1.75rem * 2)'}
-      height={'100%'}
-      stylesForCarouselContainer={css`
-        border-radius: 15% / 10%;
-        cursor: pointer;
-        :hover {
-          scale: 1.01;
-          transition: scale 0.4s linear;
-        }
-        transition: scale 0.4s linear;
-      `}
-      onSlideClick={() => {
-        setModalOpen(true);
-        setIsTusafinderModalChildOpen(true);
-      }}
-      pointerEvents={isZavodModalChildOpen ? 'none' : 'auto'}
-    >
-      {tusafinderScreenshotPaths.map((path) => (
-        <Image
-          key={path}
-          src={path}
-          css={`
-            object-fit: cover;
-          `}
-          alt={'zavod'}
-          quality={100}
-          fill
-        />
-      ))}
-    </Carousel>
-  );
-
-  const tusafinderProjectModalChild = (
-    <Carousel
-      curIndex={curIndexTusafinderProject}
-      setCurIndex={setCurIndexTusafinderProject}
-      width={'calc(100% - 1.75rem * 2 - 1rem * 2)'}
-      height={['25rem', '28rem', '30rem', '35rem', '40rem']}
-    >
-      {tusafinderScreenshotPaths.map((path) => (
-        <Image
-          key={path}
-          src={path}
-          css={`
-            object-fit: cover;
-            ${minDeviceMedia.tablet} {
-              object-fit: scale-down;
-            }
-          `}
-          alt={path}
-          quality={100}
-          fill
-        />
-      ))}
-    </Carousel>
-  );
-
   return (
     <>
       <Head>
@@ -175,46 +44,32 @@ const Projects: NextPage<ProjectPageProps> = ({
         <Container width={'100%'} rowGap={'4rem'}>
           <ProjectCard
             projectName={'Завод'}
-            carousel={zavodCardCarousel}
+            imagePaths={zavodScreenshotPaths}
             tabs={[
-              { tabName: 'описание', tabContent: <ZavodDescription /> },
+              { tabName: 'описание', tabContent: makeTabWithoutSetIndex(ZavodDescription) },
               {
                 tabName: 'предыстория',
-                tabContent: <ZavodPrehistory setCurrentSlide={setCurIndexZavodProject} />,
+                tabContent: makeTabWithSetIndex(ZavodPrehistory),
               },
-              { tabName: 'технологии', tabContent: <ZavodTechnologies /> },
+              { tabName: 'технологии', tabContent: makeTabWithoutSetIndex(ZavodTechnologies) },
             ]}
             projectLink={'https://zavod.kambalin.ru'}
             gitHubLink={'https://github.com/KambalaFish/SmartEnterprise'}
           />
           <ProjectCard
             projectName={'Туса-файндер'}
-            carousel={tusafinderCardCarousel}
+            imagePaths={tusafinderScreenshotPaths}
             tabs={[
-              { tabName: 'описание', tabContent: <>opisanie</> },
-              { tabName: 'предыстория', tabContent: <>predistoria</> },
-              { tabName: 'технологии', tabContent: <>technologii</> },
+              { tabName: 'описание', tabContent: makeTabWithoutSetIndex(() => <>opisanie</>) },
+              {
+                tabName: 'предыстория',
+                tabContent: makeTabWithoutSetIndex(() => <>predistoria</>),
+              },
+              { tabName: 'технологии', tabContent: makeTabWithoutSetIndex(() => <>technologii</>) },
             ]}
             gitHubLink={'https://github.com/ToosaFinder/toosa-finder-frontend'}
           />
         </Container>
-
-        <ModalWindow
-          isVisible={isModalOpen}
-          setModalVisibility={setModalOpen}
-          contentAreaWidth={['90vw', '95vw', '90vw', '85vw']}
-          onCloseCb={() => {
-            if (isZavodModalChildOpen) {
-              setIsZavodModalChildOpen(false);
-            }
-            if (isTusafinderModalChildOpen) {
-              setIsTusafinderModalChildOpen(false);
-            }
-          }}
-        >
-          {isZavodModalChildOpen && zavodProjectModalChild}
-          {isTusafinderModalChildOpen && tusafinderProjectModalChild}
-        </ModalWindow>
       </Container>
     </>
   );
@@ -235,8 +90,6 @@ export function getStaticProps() {
 
   const zavodScreenshotPaths = getFormattedImagePaths(zavodDir, '/projects/zavod/');
   const tusafinderScreenshotPaths = getFormattedImagePaths(tusafinderDir, '/projects/tusafinder/');
-
-  console.log(zavodScreenshotPaths);
 
   return {
     props: { zavodScreenshotPaths, tusafinderScreenshotPaths },

@@ -1,5 +1,3 @@
 export { StyledLink } from './StyledLink';
-export { TabButton } from './TabButton';
-export { ProjectCard } from './ProjectCard';
-export { ProjectLink } from './ProjectLink';
+export { ProjectCard } from './ProjectCard/ProjectCard';
 export { ZavodDescription, ZavodPrehistory, ZavodTechnologies } from './ZavodCard';

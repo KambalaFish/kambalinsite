@@ -128,7 +128,7 @@ const ProjectCard = ({
   const tabsContent = tabs.map(({ tabContent: TabContent, tabName }) => (
     <Container
       key={tabName}
-      height={['20rem', '20rem', '28.5rem']}
+      height={['20rem', '20rem', '29rem']}
       width={'100%'}
       overflowY={'auto'}
       overflowX={'hidden'}
@@ -166,9 +166,9 @@ const ProjectCard = ({
           "'tabButtons projName' 'imageArea contentArea' 'extraInfo contentArea'",
         ]}
         gridTemplateRows={[
-          '3.5rem 20rem 3.5rem 20rem 3.5rem',
-          '3.5rem 22.5rem 3.5rem 20rem 3.5rem',
-          '3.5rem 25rem 3.5rem',
+          '4rem 20rem 3.5rem 20rem 4rem',
+          '4rem 22.5rem 3.5rem 20rem 4rem',
+          '4rem 25rem 4rem',
         ]}
       >
         <Container
@@ -176,8 +176,7 @@ const ProjectCard = ({
           justifyContent={'center'}
           gridArea={'tabButtons'}
           flexDirection={'row'}
-          columnGap={'0.5rem'}
-          padding={'0'}
+          columnGap={'0.75rem'}
           borderTopLeftRadius={['0', '0', '1.5rem']}
           borderBottomLeftRadius={['1.5rem', '1.5rem', '0']}
           borderBottomRightRadius={['1.5rem', '1.5rem', '0']}
@@ -200,7 +199,7 @@ const ProjectCard = ({
           height={'100%'}
           justifyContent={['center', 'center', 'flex-end']}
           gridArea={'projName'}
-          padding={'0.25rem'}
+          padding={['0 0 0.125rem 0', '0 0 0.25rem 0']}
           borderTop={['0', '0', '1px solid rgb(235, 128, 32)']}
           borderRight={['0', '0', '1px solid rgb(235, 128, 32)']}
           boxShadow={[
@@ -218,7 +217,7 @@ const ProjectCard = ({
             color={'rgb(235, 128, 32)'}
             fontSize={'3rem'}
             lineHeight={'1'}
-            margin={'0 1rem 0 0'}
+            margin={['0', '0', '0 1rem 0 0']}
           >
             {projectName}
           </Title>
@@ -256,7 +255,7 @@ const ProjectCard = ({
               transform: translateY(calc(-1 * ${currentTab} * 20rem));
 
               ${minDeviceMedia.tablet} {
-                transform: translateY(calc(-1 * ${currentTab} * 28.5rem));
+                transform: translateY(calc(-1 * ${currentTab} * 29rem));
               }
 
               transition: transform 0.5s ease-out;

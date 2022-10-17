@@ -27,11 +27,10 @@ const TextStress = styled(TextBold)`
 `;
 
 const CardText = styled(Text)`
-  text-align: center;
+  text-align: left;
   white-space: normal;
   margin: 0 0 0.5rem;
   ${minDeviceMedia.tablet} {
-    text-align: left;
     white-space: pre-wrap;
   }
 `;

@@ -16,13 +16,11 @@ const Arrow = styled.button<{ isVisible: boolean }>`
 `;
 
 const LeftArrow = styled(Arrow)`
-  z-index: 1;
   transform: translateX(35%) rotate(-45deg);
   position: relative;
 `;
 
 const RightArrow = styled(Arrow)`
-  z-index: 1;
   transform: translateX(-35%) rotate(135deg);
 `;
 

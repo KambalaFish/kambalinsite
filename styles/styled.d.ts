@@ -1,156 +1,131 @@
 import {} from 'styled-components/cssprop';
 import 'styled-components';
 
+type RGB = `rgb(${number}, ${number}, ${number})` | `rgb(${number},${number},${number})`;
+type RGBA =
+  | `rgba(${number}, ${number}, ${number}, ${number})`
+  | `rgba(${number},${number},${number},${number})`;
+type HEX = `#${string}`;
+type Color = RGB | RGBA | HEX;
+
+interface IColor {
+  color: Color;
+}
+
+interface IBackgroundColor {
+  backgroundColor: Color;
+}
+interface IColorAndBackgroundColor extends IColor, IBackgroundColor {}
+
+interface IBoxShadowColor {
+  boxShadowColor: Color;
+}
+
 declare module 'styled-components' {
   export interface DefaultTheme {
-    backgroundColor: string;
-    fontColor: string;
+    backgroundColor: Color;
+    fontColor: Color;
     breakpoints: string[];
-    colors: { [string]: string };
-    text: {
-      color: string;
-    };
-    selection: {
-      color: string;
-      backgroundColor: string;
-    };
+    colors: { [string]: Color };
+    text: IColor;
+    selection: IColorAndBackgroundColor;
     title: {
-      selection: {
-        color: string;
-        backgroundColor: string;
-      };
+      selection: IColorAndBackgroundColor;
     };
-    styledLink: {
-      color: string;
-      backgroundColor: string;
-    };
+    styledLink: IColorAndBackgroundColor;
     techCard: {
-      hover: {
-        shadowColor: string;
-        color: string;
-      };
+      hover: IBoxShadowColor & IColor;
     };
     button: {
       primary: {
-        backgroundColor: string;
-        hover: {
-          backgroundColor: string;
-        };
-      };
-      secondary: {
-        color: string;
-        backgroundColor: string;
-      };
+        hover: IBackgroundColor;
+      } & IBackgroundColor;
+      secondary: IColorAndBackgroundColor;
     };
     contactsHighlight: {
-      backgroundColor: string;
       boxShadow: {
-        color: string;
-        insetColor: string;
+        insetColor: Color;
         spreadRadius: string;
-      };
-      secondaryButton: {
-        backgroundColor: string;
-      };
-    };
+      } & IColor;
+      secondaryButton: IBackgroundColor;
+    } & IBackgroundColor;
     pagination: {
       indexPill: {
-        backgroundColorCurrent: string;
-        backgroundColor: string;
-        currentColor: string;
-        color?: string;
-      };
+        backgroundColorCurrent: Color;
+        currentColor: Color;
+      } & IBackgroundColor &
+        Partial<IColor>;
       extremeIndexPill: {
-        backgroundColorDisabled: string;
-        backgroundColor: string;
-        arrowBorderColorDisabled: string;
-      };
+        backgroundColorDisabled: Color;
+        arrowBorderColorDisabled: Color;
+      } & IBackgroundColor;
       arrow: {
-        borderColor: string;
+        borderColor: Color;
       };
     };
     bookmarks: {
       card: {
         caption: {
-          insetBoxShadowColor: string;
+          insetBoxShadowColor: Color;
         };
         hover: {
-          boxShadowColor: string;
-          captionBoxShadowColor: string;
-        };
+          captionBoxShadowColor: Color;
+        } & IBoxShadowColor;
       };
     };
     scrollbar: {
       thumb: {
-        backgroundColor: string;
-        boxShadowColor: string;
-        hover: {
-          backgroundColor: string;
-          boxShadowColor: string;
-        };
-      };
+        hover: IBackgroundColor & IBoxShadowColor;
+      } & IBackgroundColor &
+        IBoxShadowColor;
       button: {
-        backgroundColor: string;
-        hover: {
-          backgroundColor: string;
-        };
+        hover: IBackgroundColor;
         arrow: {
-          backgroundColor: string;
-          hover: {
-            backgroundColor: string;
-          };
-        };
-      };
+          hover: IBackgroundColor;
+        } & IBackgroundColor;
+      } & IBackgroundColor;
     };
     mobileMenu: {
       menuItems: {
-        backgroundColor: string;
         styledLi: {
-          color: string;
-          currentColor: string;
-        };
-      };
+          currentColor: Color;
+        } & IColor;
+      } & IBackgroundColor;
       burger: {
-        backgroundColorItemsVisible: string;
-        backgroundColorItemsInvisible: string;
+        backgroundColorItemsVisible: Color;
+        backgroundColorItemsInvisible: Color;
       };
-      phone: {
-        color: string;
-      };
+      phone: IColor;
     };
     modalWindow: {
-      backShadow: {
-        backgroundColor: string;
-      };
+      backShadow: IBackgroundColor;
       contentArea: {
-        backgroundColor: string;
         boxShadow: {
           outSet: {
-            color: string;
             blurRadius: string;
             spreadRadius: string;
-          };
+          } & IColor;
           inset: {
-            color: string;
             blurRadius: string;
             spreadRadius: string;
-          };
+          } & IColor;
         };
-      };
+      } & IBackgroundColor;
       closeButton: {
-        backgroundColor: string;
-        crossColor: string;
-        boxShadowColor: string;
+        crossColor: Color;
         blurRadius: string;
         hover: {
-          backgroundColor: string;
-          crossColor: string;
-          boxShadowColor: string;
-        };
-      };
+          crossColor: Color;
+        } & IBackgroundColor &
+          IBoxShadowColor;
+      } & IBackgroundColor &
+        IBoxShadowColor;
     };
     contactsModal: {
-      hoverTextColor: string;
+      hoverTextColor: Color;
+    };
+    carousel: {
+      arrow: IColor;
     };
   }
 }

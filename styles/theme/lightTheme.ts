@@ -31,13 +31,12 @@ const lightTheme: DefaultTheme = {
   },
   techCard: {
     hover: {
-      shadowColor: 'rgba(0, 0, 0, 0.8)',
+      boxShadowColor: 'rgba(0, 0, 0, 0.8)',
       color: '#000',
     },
   },
   button: {
     primary: {
-      // backgroundColor: '#212121',
       backgroundColor: 'rgba(0,0,0,0.725)',
       hover: {
         backgroundColor: '#000',
@@ -56,7 +55,6 @@ const lightTheme: DefaultTheme = {
       spreadRadius: '1.75rem',
     },
     secondaryButton: {
-      // backgroundColor: 'rgba(0, 0, 0, 0.04)',
       backgroundColor: 'rgba(220,220,215, 1)',
     },
   },
@@ -91,12 +89,12 @@ const lightTheme: DefaultTheme = {
       backgroundColor: 'rgba(0,0,0,0.0625)',
       boxShadowColor: 'rgba(0,0,0,0.125)',
       hover: {
-        backgroundColor: `rgba(0,0,0,0.125)`,
-        boxShadowColor: `rgba(0,0,0,0.25)`,
+        backgroundColor: `rgba(0, 0, 0, 0.125)`,
+        boxShadowColor: `rgba(0, 0, 0, 0.25)`,
       },
     },
     button: {
-      backgroundColor: `rgba(0,0,0,0.125)`,
+      backgroundColor: `rgba(0, 0, 0, 0.125)`,
       hover: {
         backgroundColor: 'rgba(0,0,0,0.25)',
       },
@@ -157,6 +155,9 @@ const lightTheme: DefaultTheme = {
   },
   contactsModal: {
     hoverTextColor: 'rgb(233, 168, 51)',
+  },
+  carousel: {
+    arrow: { color: 'rgb(32, 32, 32)' },
   },
 };
 export { lightTheme };

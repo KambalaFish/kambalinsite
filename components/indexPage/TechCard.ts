@@ -14,7 +14,7 @@ const TechCard = styled.a`
   color: ${({ theme }) => theme.text.color};
   border-radius: 50%;
   :hover {
-    box-shadow: 0 0 3.75rem 0.15625rem ${({ theme }) => theme.techCard.hover.shadowColor};
+    box-shadow: 0 0 3.75rem 0.15625rem ${({ theme }) => theme.techCard.hover.boxShadowColor};
     color: ${(props) => props.theme.techCard.hover.color};
   }
 `;

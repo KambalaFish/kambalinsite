@@ -8,8 +8,9 @@ import {
   ZavodDescription,
   ZavodPrehistory,
   ZavodTechnologies,
-  makeTabWithSetIndex,
-  makeTabWithoutSetIndex,
+  TusafinderDescription,
+  TusafinderPrehistory,
+  TusafinderTechnologies,
 } from '@components/projectsPage';
 
 import * as fs from 'fs';
@@ -39,6 +40,7 @@ const Projects: NextPage<ProjectPageProps> = ({
             </StyledLink>
             .
           </Text>
+          <Text width={['30ch', '40ch', 'auto']}>Нажмите на изображение, чтобы увеличить его.</Text>
         </Container>
 
         <Container width={'100%'} rowGap={'4rem'}>
@@ -46,12 +48,9 @@ const Projects: NextPage<ProjectPageProps> = ({
             projectName={'Завод'}
             imagePaths={zavodScreenshotPaths}
             tabs={[
-              { tabName: 'описание', tabContent: makeTabWithoutSetIndex(ZavodDescription) },
-              {
-                tabName: 'предыстория',
-                tabContent: makeTabWithSetIndex(ZavodPrehistory),
-              },
-              { tabName: 'технологии', tabContent: makeTabWithoutSetIndex(ZavodTechnologies) },
+              { tabName: 'описание', tabContent: ZavodDescription },
+              { tabName: 'предыстория', tabContent: ZavodPrehistory },
+              { tabName: 'технологии', tabContent: ZavodTechnologies },
             ]}
             projectLink={'https://zavod.kambalin.ru'}
             gitHubLink={'https://github.com/KambalaFish/SmartEnterprise'}
@@ -60,12 +59,9 @@ const Projects: NextPage<ProjectPageProps> = ({
             projectName={'Туса-файндер'}
             imagePaths={tusafinderScreenshotPaths}
             tabs={[
-              { tabName: 'описание', tabContent: makeTabWithoutSetIndex(() => <>opisanie</>) },
-              {
-                tabName: 'предыстория',
-                tabContent: makeTabWithoutSetIndex(() => <>predistoria</>),
-              },
-              { tabName: 'технологии', tabContent: makeTabWithoutSetIndex(() => <>technologii</>) },
+              { tabName: 'описание', tabContent: TusafinderDescription },
+              { tabName: 'предыстория', tabContent: TusafinderPrehistory },
+              { tabName: 'технологии', tabContent: TusafinderTechnologies },
             ]}
             gitHubLink={'https://github.com/ToosaFinder/toosa-finder-frontend'}
           />
@@ -83,8 +79,8 @@ export function getStaticProps() {
     return fs
       .readdirSync(absoluteDirPath)
       .sort((a, b) => parseInt(a) - parseInt(b))
-      .map((zfn) => {
-        return `${relativeDirPath}${zfn}`;
+      .map((filename) => {
+        return `${relativeDirPath}${filename}`;
       });
   };
 

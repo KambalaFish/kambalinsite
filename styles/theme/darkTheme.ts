@@ -28,7 +28,7 @@ const darkTheme: DefaultTheme = {
   },
   techCard: {
     hover: {
-      shadowColor: 'rgba(255, 255, 255, 0.8)',
+      boxShadowColor: 'rgba(255, 255, 255, 0.8)',
       color: '#fff',
     },
   },
@@ -133,7 +133,7 @@ const darkTheme: DefaultTheme = {
       backgroundColor: 'rgba(18,18,18, 0.925)',
     },
     contentArea: {
-      backgroundColor: 'rgba(0, 0, 0)',
+      backgroundColor: 'rgba(0, 0, 0, 1)',
       boxShadow: {
         outSet: {
           color: 'rgb(16,16,16)',
@@ -161,6 +161,9 @@ const darkTheme: DefaultTheme = {
   },
   contactsModal: {
     hoverTextColor: 'rgb(60, 255, 179)',
+  },
+  carousel: {
+    arrow: { color: 'rgb(235, 235, 235)' },
   },
 };
 

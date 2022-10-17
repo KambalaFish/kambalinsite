@@ -10,8 +10,8 @@ const Arrow = styled.button<{ isVisible: boolean }>`
   display: block;
   background-color: transparent;
   color: transparent;
-  border-top: 0.25rem solid white;
-  border-left: 0.25rem solid white;
+  border-top: 0.25rem solid ${({ theme }) => theme.carousel.arrow.color};
+  border-left: 0.25rem solid ${({ theme }) => theme.carousel.arrow.color};
   ${({ isVisible }) => showHide(isVisible)};
 `;
 

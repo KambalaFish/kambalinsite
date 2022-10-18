@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const Indicator = styled.button<{ isCurrent: boolean }>`
   border: 0;
-  background-color: ${({ isCurrent }) =>
-    isCurrent ? `rgba(255, 255, 255, 1)` : `rgba(255, 255, 255, 0.25)`};
+  background-color: ${({ isCurrent, theme }) =>
+    isCurrent
+      ? theme.carousel.indicator.currentBackgroundColor
+      : theme.carousel.indicator.backgroundColor};
   padding: 0;
   margin: 0;
   width: 0.75rem;

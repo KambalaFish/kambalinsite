@@ -180,13 +180,16 @@ const ProjectCard = ({
           borderTopLeftRadius={['0', '0', '1.5rem']}
           borderBottomLeftRadius={['1.5rem', '1.5rem', '0']}
           borderBottomRightRadius={['1.5rem', '1.5rem', '0']}
-          boxShadow={[
-            `inset 0rem -0.1rem 0.5rem 0rem rgb(235, 128, 32)`,
-            `inset 0rem -0.1rem 0.5rem 0rem rgb(235, 128, 32)`,
-            `inset 0rem 0.15rem 0.3rem 0rem rgb(255, 125, 125)`,
-          ]}
-          css={`
-            background-color: rgb(4, 4, 4);
+          css={css`
+            background-color: ${({ theme }) =>
+              theme.projectCard.tabButtonsGridArea.backgroundColor};
+            box-shadow: inset 0rem -0.1rem 0.5rem 0rem ${({ theme }) => theme.projectCard.tabButtonsGridArea.mobileDevice.boxShadowColor};
+            ${minDeviceMedia.tablet} {
+              // box-shadow: inset 0 0.15rem 0.3rem 0
+              //   ${({ theme }) => theme.projectCard.tabButtonsGridArea.boxShadowColor};
+              box-shadow: inset 0.1rem 0.1rem 0.3rem 0
+                ${({ theme }) => theme.projectCard.tabButtonsGridArea.boxShadowColor};
+            }
           `}
           onClick={onTabButton}
         >
@@ -200,8 +203,6 @@ const ProjectCard = ({
           justifyContent={['center', 'center', 'flex-end']}
           gridArea={'projName'}
           padding={['0 0 0.125rem 0', '0 0 0.25rem 0']}
-          borderTop={['0', '0', '1px solid rgb(235, 128, 32)']}
-          borderRight={['0', '0', '1px solid rgb(235, 128, 32)']}
           boxShadow={[
             'inset 0rem 0.1rem 0.5rem 0rem rgb(235, 128, 32)',
             'inset 0rem 0.1rem 0.5rem 0rem rgb(235, 128, 32)',
@@ -209,15 +210,25 @@ const ProjectCard = ({
           ]}
           borderTopRightRadius={'1.5rem'}
           borderTopLeftRadius={['1.5rem', '1.5rem', '0']}
-          css={`
-            background-color: rgb(0, 0, 0);
+          css={css`
+            background-color: ${({ theme }) => theme.projectCard.backgroundColor};
+            border-top: 0;
+            border-right: 0;
+            ${minDeviceMedia.tablet} {
+              border-top: 1px solid
+                ${({ theme }) => theme.projectCard.projNameGridArea.border.color};
+              border-right: 1px solid
+                ${({ theme }) => theme.projectCard.projNameGridArea.border.color};
+            }
           `}
         >
           <Title
-            color={'rgb(235, 128, 32)'}
             fontSize={'3rem'}
             lineHeight={'1'}
             margin={['0', '0', '0 1rem 0 0']}
+            css={css`
+              color: ${({ theme }) => theme.projectCard.cardTitle.color};
+            `}
           >
             {projectName}
           </Title>
@@ -229,8 +240,8 @@ const ProjectCard = ({
           justifyContent={'center'}
           gridArea={'imageArea'}
           paddingY={'1rem'}
-          css={`
-            background-color: rgb(0, 0, 0);
+          css={css`
+            background-color: ${({ theme }) => theme.projectCard.backgroundColor};
           `}
         >
           {imageAreaContent}
@@ -243,9 +254,14 @@ const ProjectCard = ({
           gridArea={'contentArea'}
           overflow={'hidden'}
           borderBottomRightRadius={['0', '0', '2rem']}
-          boxShadow={['0', '0', 'inset -0.05rem -0.05rem 0.1rem 0 rgb(255, 192, 32)']}
-          css={`
-            background-color: rgb(0, 0, 64);
+          css={css`
+            background-color: ${({ theme }) =>
+              theme.projectCard.contentAreaGridArea.backgroundColor};
+            box-shadow: none;
+            ${minDeviceMedia.tablet} {
+              box-shadow: inset -0.05rem -0.05rem 0.1rem 0
+                ${({ theme }) => theme.projectCard.contentAreaGridArea.boxShadowColor};
+            }
           `}
         >
           <Container
@@ -272,12 +288,19 @@ const ProjectCard = ({
           justifyContent={'center'}
           borderBottomLeftRadius={['0', '0', '1.5rem']}
           columnGap={'1rem'}
-          boxShadow={['0', '0', 'inset 0rem 0rem 0.25rem 0 rgb(235, 128, 32)']}
-          css={`
-            background-color: rgba(235, 128, 32, 0.05);
+          css={css`
+            background-color: ${({ theme }) => theme.projectCard.extraInfoGridArea.backgroundColor};
+            box-shadow: none;
+            border-left: 0.1rem solid
+              ${({ theme }) => theme.projectCard.extraInfoGridArea.borderColor};
+            border-right: 0.1rem solid
+              ${({ theme }) => theme.projectCard.extraInfoGridArea.borderColor};
+            ${minDeviceMedia.tablet} {
+              box-shadow: inset 0.1rem -0.1rem 0.3rem 0 ${({ theme }) => theme.projectCard.extraInfoGridArea.boxShadowColor};
+              border-left: 0;
+              border-right: 0;
+            }
           `}
-          borderRight={'0.1rem solid rgb(235, 128, 32)'}
-          borderLeft={'0.1rem solid rgb(235, 128, 32)'}
         >
           {projectLink && (
             <ProjectLink href={projectLink} target={'_blank'} rel='noreferrer'>
@@ -285,13 +308,12 @@ const ProjectCard = ({
             </ProjectLink>
           )}
           <a
-            css={`
+            css={css`
               cursor: pointer;
-              color: salmon;
+              color: ${({ theme }) => theme.projectCard.projectLink.backgroundColor};
               transition: color 0.4s ease-in;
-
               :hover {
-                color: lightblue;
+                color: ${({ theme }) => theme.projectCard.projectLink.onHover.backgroundColor};
                 transition: color 0.6s ease-out;
               }
             `}

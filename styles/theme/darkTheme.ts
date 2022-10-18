@@ -164,6 +164,66 @@ const darkTheme: DefaultTheme = {
   },
   carousel: {
     arrow: { color: 'rgb(235, 235, 235)' },
+    indicator: {
+      backgroundColor: 'rgba(255, 255, 255, 0.25)',
+      currentBackgroundColor: 'rgba(255, 255, 255, 1)',
+    },
+  },
+  projectCard: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    tabButtonsGridArea: {
+      backgroundColor: 'rgb(4, 4, 4)',
+      boxShadowColor: 'rgb(255, 125, 125)',
+      mobileDevice: {
+        boxShadowColor: 'rgb(235, 128, 32)',
+      },
+    },
+    projNameGridArea: {
+      border: {
+        color: 'rgb(235, 128, 32)',
+      },
+    },
+    contentAreaGridArea: {
+      backgroundColor: 'rgb(0, 0, 64)',
+      boxShadowColor: 'rgb(255, 192, 32)',
+      typography: {
+        textBold: {
+          color: 'rgb(245, 245, 245)',
+        },
+        highlightedText: {
+          color: 'rgb(255, 255, 255)',
+          hoverColor: 'rgb(32, 180, 220)',
+        },
+        slightlyHighlightedText: {
+          color: 'rgb(230, 230, 230)',
+        },
+      },
+    },
+    extraInfoGridArea: {
+      backgroundColor: 'rgba(235, 128, 32, 0.05)',
+      boxShadowColor: 'rgb(235, 128, 32)',
+      borderColor: 'rgb(235, 128, 32)',
+    },
+    cardTitle: {
+      color: 'rgb(235, 128, 32)',
+    },
+    tabButton: {
+      backgroundColor: 'rgb(105, 10, 10)',
+      color: 'rgb(250, 235, 215)',
+      backgroundColorCurrent: 'rgb(255, 10, 50)',
+    },
+    projectLink: {
+      backgroundColor: 'rgb(250, 128, 114)',
+      onHover: {
+        // backgroundColor: 'rgb(173, 216, 230)',
+        backgroundColor: 'rgb(255, 32, 64)',
+      },
+    },
+  },
+  projectPage: {
+    styledLink: {
+      color: 'rgb(0, 255, 255)',
+    },
   },
 };
 

@@ -126,6 +126,31 @@ declare module 'styled-components' {
     };
     carousel: {
       arrow: IColor;
+      indicator: { currentBackgroundColor: Color } & IBackgroundColor;
+    };
+    projectCard: {
+      projNameGridArea: {
+        border: IColor;
+      };
+      tabButtonsGridArea: {
+        mobileDevice: IBoxShadowColor;
+      } & IBoxShadowColor &
+        IBackgroundColor;
+      contentAreaGridArea: {
+        typography: {
+          textBold: IColor;
+          highlightedText: { hoverColor: Color } & IColor;
+          slightlyHighlightedText: IColor;
+        };
+      } & IBoxShadowColor &
+        IBackgroundColor;
+      extraInfoGridArea: { borderColor: Color } & IBoxShadowColor & IBackgroundColor;
+      cardTitle: IColor;
+      tabButton: { backgroundColorCurrent: Color } & IColorAndBackgroundColor;
+      projectLink: { onHover: IBackgroundColor } & IBackgroundColor;
+    } & IBackgroundColor;
+    projectPage: {
+      styledLink: IColor;
     };
   }
 }

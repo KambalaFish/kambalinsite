@@ -17,7 +17,7 @@ const ContentAreaTitle = styled(Title)`
 const TextBold = styled(Text)`
   display: inline;
   font-weight: 800;
-  color: rgb(245, 245, 245);
+  color: ${({ theme }) => theme.projectCard.contentAreaGridArea.typography.textBold.color};
 `;
 
 const TextStress = styled(TextBold)`
@@ -37,16 +37,18 @@ const CardText = styled(Text)`
 
 const HighlightedText = styled(TextBold)`
   cursor: pointer;
-  color: rgb(255, 255, 255);
+  color: ${({ theme }) => theme.projectCard.contentAreaGridArea.typography.highlightedText.color};
   transition: color 0.3s ease-in;
   :hover {
-    color: rgb(32, 180, 220);
+    color: ${({ theme }) =>
+      theme.projectCard.contentAreaGridArea.typography.highlightedText.hoverColor};
     transition: color 0.3s ease-in;
   }
 `;
 
 const SlightlyHighlightedText = styled(HighlightedText)`
-  color: rgb(230, 230, 230);
+  color: ${({ theme }) =>
+    theme.projectCard.contentAreaGridArea.typography.slightlyHighlightedText.color};
 `;
 
 const cardTab = '    ';

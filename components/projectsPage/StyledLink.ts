@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledLink = styled.a`
-  color: aqua;
+  color: ${({ theme }) => theme.projectPage.styledLink.color};
   text-decoration: none;
   position: relative;
   cursor: pointer;

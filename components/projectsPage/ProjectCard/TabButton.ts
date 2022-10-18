@@ -12,8 +12,8 @@ const TabButton = styled.button<TabButtonProps>`
   display: inline-block;
   border-radius: 0.75rem / 0.5rem;
   overflow: hidden;
-  background-color: rgb(105, 10, 10);
-  color: antiquewhite;
+  background-color: ${({ theme }) => theme.projectCard.tabButton.backgroundColor};
+  color: ${({ theme }) => theme.projectCard.tabButton.color};
   font-size: 1rem;
   line-height: 1;
   font-weight: 500;
@@ -26,7 +26,7 @@ const TabButton = styled.button<TabButtonProps>`
   ${({ isCurrent }) => {
     if (isCurrent) {
       return css`
-        background-color: rgb(255, 10, 50);
+        background-color: ${({ theme }) => theme.projectCard.tabButton.backgroundColorCurrent};
         transform: scale(1.05);
         opacity: 1;
       `;

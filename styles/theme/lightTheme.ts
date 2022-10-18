@@ -158,6 +158,65 @@ const lightTheme: DefaultTheme = {
   },
   carousel: {
     arrow: { color: 'rgb(32, 32, 32)' },
+    indicator: {
+      backgroundColor: 'rgb(170,170,170)',
+      currentBackgroundColor: 'rgb(8,8,8)',
+    },
+  },
+  projectCard: {
+    backgroundColor: '#f4efe8',
+    contentAreaGridArea: {
+      backgroundColor: '#f8e9e8',
+      boxShadowColor: 'rgb(64,64,64)',
+      typography: {
+        textBold: {
+          color: 'rgb(44,44,44)',
+        },
+        highlightedText: {
+          color: 'rgb(0,0,0)',
+          hoverColor: '#358e89',
+        },
+        slightlyHighlightedText: {
+          color: 'rgb(32,32,32)',
+        },
+      },
+    },
+    tabButtonsGridArea: {
+      backgroundColor: 'rgb(200, 211, 221)',
+      boxShadowColor: 'rgb(16,32,64)',
+      mobileDevice: {
+        boxShadowColor: 'rgb(128, 64, 128)',
+      },
+    },
+    projNameGridArea: {
+      border: {
+        color: 'rgb(32, 32, 32)',
+      },
+    },
+    extraInfoGridArea: {
+      backgroundColor: 'rgb(220, 200, 190)',
+      boxShadowColor: '#a84e56',
+      borderColor: 'rgb(32, 128, 235)',
+    },
+    projectLink: {
+      backgroundColor: '#bd8084',
+      onHover: {
+        backgroundColor: '#9a0019',
+      },
+    },
+    cardTitle: {
+      color: '#1a2631',
+    },
+    tabButton: {
+      backgroundColor: '#6866ae',
+      backgroundColorCurrent: '#3a2f81',
+      color: 'rgb(200, 211, 221)',
+    },
+  },
+  projectPage: {
+    styledLink: {
+      color: '#212121',
+    },
   },
 };
 export { lightTheme };

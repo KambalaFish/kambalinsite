@@ -59,7 +59,7 @@ const ProjectCard = ({
         }}
         pointerEvents={isModalOpen ? 'none' : 'auto'}
       >
-        {imagePaths.map((path) => (
+        {imagePaths.map((path, index) => (
           <Image
             key={path}
             src={path}
@@ -69,6 +69,7 @@ const ProjectCard = ({
             alt={path}
             quality={100}
             fill
+            priority={index === 0}
           />
         ))}
       </Carousel>

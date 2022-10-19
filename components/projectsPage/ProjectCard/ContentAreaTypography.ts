@@ -14,7 +14,7 @@ const ContentAreaTitle = styled(Title)`
   }
 `;
 
-const TextBold = styled(Text)`
+const TextBold = styled(Text).attrs({ as: 'span' })`
   display: inline;
   font-weight: 800;
   color: ${({ theme }) => theme.projectCard.contentAreaGridArea.typography.textBold.color};

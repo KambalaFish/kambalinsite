@@ -55,7 +55,7 @@ const ZavodDescription = makeTabWithSetIndex(
               аутентификации сгорает, из Local storage удаляется информация о залогинившемся
               пользователе, после этого приложение редиректит пользователя на страницу входа.
             </CardText>
-            <CardText>
+            <CardText as={'li'}>
               <HighlightedText onClick={() => setCurrentIndex(1)}>
                 Выход из системы.{' '}
               </HighlightedText>
@@ -66,9 +66,9 @@ const ZavodDescription = makeTabWithSetIndex(
               ответа с информацией об залогинившемся пользоателе, которое было получено при
               аутентификации, после чего приложение редиректит пользователя на страницу входа.
             </CardText>
-            <CardText>
+            <CardText as={'li'}>
               <HighlightedText onClick={() => setCurrentIndex(2)}>
-                Просмотр профиля.
+                Просмотр профиля.{' '}
               </HighlightedText>
               На странице профиля отображается информация о пользователе, полученная при входе в
               систему.

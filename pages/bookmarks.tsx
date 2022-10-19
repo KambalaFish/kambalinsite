@@ -125,7 +125,7 @@ const Bookmarks: NextPage<Raindrops> = ({ count, items }) => {
 
 export async function getStaticProps() {
   const { data } = await getBookmarks();
-  return { props: { count: data.count, items: data.items } };
+  return { props: { count: data.count, items: data.items }, revalidate: 43200 };
 }
 
 export default Bookmarks;

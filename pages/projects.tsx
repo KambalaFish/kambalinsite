@@ -40,7 +40,6 @@ const Projects: NextPage<ProjectPageProps> = ({
             </StyledLink>
             .
           </Text>
-          <Text width={['30ch', '40ch', 'auto']}>Нажмите на изображение, чтобы увеличить его.</Text>
         </Container>
 
         <Container width={'100%'} rowGap={'4rem'}>

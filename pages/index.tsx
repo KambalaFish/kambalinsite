@@ -66,16 +66,10 @@ const Home: NextPage = () => {
             gridTemplateColumns={[
               'repeat(3, 1fr)',
               'repeat(3, 1fr)',
-              'repeat(3, 1fr)',
-              'repeat(4, 1fr)',
+              'repeat(9, 1fr)',
+              'repeat(5, 1fr)',
             ]}
-            gridTemplateRows={[
-              'repeat(3, 1fr)',
-              'repeat(3, 1fr)',
-              'repeat(3, 1fr)',
-              'repeat(2, 1fr)',
-            ]}
-            gridColumnGap={'4rem'}
+            gridColumnGap={['4rem', '4rem', '1rem', '4rem']}
             gridRowGap={'2rem'}
             pt={'1rem'}
           >

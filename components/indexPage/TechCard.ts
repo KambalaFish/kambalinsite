@@ -8,6 +8,7 @@ import { SiBabel } from '@react-icons/all-files/si/SiBabel';
 import { SiStyledComponents } from '@react-icons/all-files/si/SiStyledComponents';
 import { SiEslint } from '@react-icons/all-files/si/SiEslint';
 import { SiPrettier } from '@react-icons/all-files/si/SiPrettier';
+import { SiNginx } from '@react-icons/all-files/si/SiNginx';
 
 const TechCard = styled.a`
   transition: 0.4s ease-in-out 0s;
@@ -59,6 +60,11 @@ const techStack: { Icon: IconType; url: string; title: string }[] = [
     Icon: SiPrettier,
     url: 'https://prettier.io/',
     title: 'prettier',
+  },
+  {
+    Icon: SiNginx,
+    url: 'https://docs.nginx.com/',
+    title: 'nginx',
   },
 ];
 

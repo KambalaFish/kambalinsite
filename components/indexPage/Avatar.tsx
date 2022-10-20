@@ -5,7 +5,7 @@ import React from 'react';
 
 const srcSet = (format: string): string =>
   `/me/me240.${format} 240w, /me/me300.${format} 300w, /me/me400.${format} 400w, /me/me450.${format} 450w, /me/me500.${format} 500w, 
-  /me/retina/me300@2x.${format} 2x, /me/retina/me300@3x.${format} 3x,`;
+  /me/retina/me300@2x.${format} 2x, /me/retina/me300@3x.${format} 3x`;
 
 /*можно обойтись без этого контейнера, но тогда это может вызвать камулейтив
 лейаут шифт в старых браузерах, чекай: https://www.youtube.com/watch?v=4-d_SoCHeWE*/
@@ -47,8 +47,8 @@ const Avatar = () => {
   return (
     <AvatarContainer>
       <source
-        type={'image/avif'}
-        srcSet={srcSet('avif')}
+        type={'image/webp'}
+        srcSet={srcSet('webp')}
         sizes={sizes}
         width={'300'}
         height={'300'}

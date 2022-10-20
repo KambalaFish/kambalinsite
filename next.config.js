@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     deviceSizes: [576, 768, 992, 1200],
     domains: ['res.cloudinary.com'],
+    minimumCacheTTL: 259200
   },
   experimental: {
     images: {
@@ -17,6 +18,7 @@ const nextConfig = {
   eslint: {
     dirs: ['api', 'components', 'hooks', 'pages', 'styles', 'utils'],
   },
+  poweredByHeader: false
 };
 
 const nextConfigProd = {

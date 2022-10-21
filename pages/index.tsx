@@ -4,17 +4,29 @@ import { Container, Grid, PrimaryButton, SecondaryButton, Text } from '@componen
 import { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import { Title } from '@components';
 import { AnimatedEmoji } from '@components';
-import { NextRouter, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { Avatar, TechCard, techStack } from '@components/indexPage';
 import { contactsHighlight, nameAnimation, specializationAnimation } from '@styles/indexPage';
 import { ModalWindow } from '@components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Contacts } from '@components/indexPage';
 
 const Home: NextPage = () => {
-  const router: NextRouter = useRouter();
-  const styleForContactsActiveAnchor: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined =
-    router.asPath.endsWith('/#contacts') ? contactsHighlight : undefined;
+  const { asPath, isReady } = useRouter();
+  const [styleForContactsActiveAnchor, setContactsStyle] = useState<
+    FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined
+  >(undefined);
+
+  useEffect(() => {
+    if (isReady) {
+      if (asPath.endsWith('/#contacts')) {
+        setContactsStyle(contactsHighlight);
+      } else {
+        setContactsStyle(undefined);
+      }
+    }
+  }, [asPath, isReady]);
+
   const [isModalVisible, setModalVisibility] = useState(false);
 
   return (

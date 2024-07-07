@@ -1,17 +1,17 @@
+import { makeTabWithSetIndex } from '@components/projectsPage/projectCard/TabInterfaces';
+import { TabContentProps } from '@components/projectsPage/projectCard/TabInterfaces';
+import { useCallback } from 'react';
 import { Container } from '@components';
 import {
-  ContentAreaTitle,
-  TextStress,
-  CardText,
   cardTab,
-  TextBold,
-  StyledUl,
+  CardText,
+  ContentAreaTitle,
   HighlightedText,
   SlightlyHighlightedText,
-} from './ProjectCard/ContentAreaTypography';
-import { TabContentProps } from './ProjectCard/TabInterfaces';
-import { makeTabWithSetIndex, makeTabWithoutSetIndex } from './ProjectCard/TabInterfaces';
-import { useCallback } from 'react';
+  StyledUl,
+  TextBold,
+  TextStress,
+} from '@components/projectsPage/projectCard/ContentAreaTypography';
 
 const ZavodDescription = makeTabWithSetIndex(
   ({ setCurrentIndex }: TabContentProps): React.ReactElement => {
@@ -206,77 +206,4 @@ const ZavodDescription = makeTabWithSetIndex(
   }
 );
 
-const ZavodPrehistory = makeTabWithoutSetIndex(
-  (): React.ReactElement => (
-    <Container paddingX={'0.5rem'} width={'100%'}>
-      <Container flexDirection={'row'} justifyContent={'center'}>
-        <ContentAreaTitle>Предыстория</ContentAreaTitle>
-      </Container>
-      <Container
-        alignItems={['center', 'center', 'flex-start']}
-        justifyContent={'flex-start'}
-        width={'100%'}
-      >
-        <CardText>
-          {cardTab}Я делал этот проект в рамках дипломной работы. Спойлер: работа не была завершена
-          до конца, т.к. я ушёл в академический отпуск, а работа была передана другому человеку.
-        </CardText>
-        <CardText>
-          {cardTab}Суть работы заключалась в том, чтобы создать аналог &quot;джиры&quot; на
-          минималках. Подразумевалось, что данная работа позволила бы обслуживать множество
-          компаний, и помочь управляющим на предприятиях этих компаний наладить отслеживание рабочих
-          процессов в реальном времени.
-        </CardText>
-        <CardText>
-          {cardTab}Планировалось реализовать функционал, который позволил бы создавать работников,
-          отводить роли для них, объединять их в команды, отделы. Конечно же, так как это аналог
-          джиры нужно было обеспечить возможность создавать подзадачи, задачи и эпики, вешать их на
-          рабочих или давать им возможность самим зафиксировать задачу на себя с дальнейшим правом
-          изменения статуса задачи. Ну и соответственно в дальнейшем администратор должен был иметь
-          возможность отслеживать воркфлоу по задачам.
-        </CardText>
-        <CardText>
-          {cardTab}В общем, планы были грандиозные, но реализовать я успел не так много по этому
-          проекту :)
-        </CardText>
-      </Container>
-    </Container>
-  )
-);
-
-const ZavodTechnologies = makeTabWithoutSetIndex(
-  (): React.ReactElement => (
-    <Container width={'100%'} paddingX={'0.5rem'}>
-      <Container flexDirection={'row'} justifyContent={'center'}>
-        <ContentAreaTitle>Технологии</ContentAreaTitle>
-      </Container>
-      <Container width={'100%'} alignItems={'flex-start'} justifyContent={'flex-start'}>
-        <CardText>{cardTab}Бекенд часть:</CardText>
-        <StyledUl>
-          <CardText as={'li'}>
-            В качестве базы данных используется <TextBold>MySql</TextBold>.
-          </CardText>
-          <CardText as={'li'}>
-            В качестве бекенд сервера, обрабатывающего rest-запросы, используется фреймворк{' '}
-            <TextBold>Laravel</TextBold>. База данных заполняется при помощи seeder&apos;a, который
-            использует классы фабрик, в которых определяется, какого рода случайные значения должны
-            генерироваться для заполнения таблиц базы данных посредством утилиты фейкер.
-          </CardText>
-        </StyledUl>
-        <CardText>{cardTab}Фронтенд часть:</CardText>
-        <StyledUl>
-          <CardText as={'li'}>React</CardText>
-          <CardText as={'li'}>Typescript</CardText>
-          <CardText as={'li'}>Material-UI</CardText>
-          <CardText as={'li'}>Redux-toolkit</CardText>
-          <CardText as={'li'}>Axios</CardText>
-          <CardText as={'li'}>React-hook-form. Yup</CardText>
-          <CardText as={'li'}>EsLint</CardText>
-          <CardText as={'li'}>Babel</CardText>
-        </StyledUl>
-      </Container>
-    </Container>
-  )
-);
-
-export { ZavodDescription, ZavodPrehistory, ZavodTechnologies };
+export { ZavodDescription };

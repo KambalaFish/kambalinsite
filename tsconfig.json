@@ -20,6 +20,7 @@
       "@components/indexPage": ["components/indexPage"],
       "@components/bookmarksPage": ["components/bookmarksPage"],
       "@components/projectsPage": ["components/projectsPage"],
+      "@components/projectsPage/*": ["components/projectsPage/*"],
       "@styles/*": ["styles/*"],
       "@hooks": ["hooks"],
       "@api": ["api"],

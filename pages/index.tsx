@@ -10,6 +10,7 @@ import { contactsHighlight, nameAnimation, specializationAnimation } from '@styl
 import { ModalWindow } from '@components';
 import { useEffect, useState } from 'react';
 import { Contacts } from '@components/indexPage';
+import { KaluzhskoRizhskaIcon } from '@public/KaluzhskoRizhskaIcon';
 
 const Home: NextPage = () => {
   const { asPath, isReady } = useRouter();
@@ -58,15 +59,12 @@ const Home: NextPage = () => {
         <Container maxWidth={['40ch', '70ch']}>
           <Text textAlign={'center'} mb={['1.5rem', '0.75rem']}>
             Я окончил бакалавриат факультета информационных технологий Новосибирского
-            государственного университета (НГУ) в 2022 году
-            <span>🎓</span>
+            государственного университета (НГУ)<span>🎓</span>
           </Text>
           <Text mb={'0'}>
-            Я живу в Академгородке
-            <span>🌲🐿</span>
+            Я живу в Москве, м. Алексеевская <KaluzhskoRizhskaIcon />
             <br />
-            ️Также готов рассмотреть удалёнку
-            <span>🤔</span>
+            ️Также готов рассмотреть удалёнку <span>🤔</span>
           </Text>
         </Container>
 

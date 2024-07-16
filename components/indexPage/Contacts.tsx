@@ -47,8 +47,8 @@ const SkypeIcon = styled(SiSkype)`
 const contacts: ContactProps[] = [
   {
     icon: TelegramIcon,
-    title: '@dmitrykambalin',
-    url: 'https://t.me/dmitrykambalin',
+    title: '@dimakambalin',
+    url: 'https://t.me/dimakambalin',
   },
   {
     icon: MailIcon,

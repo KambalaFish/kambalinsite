@@ -51,7 +51,7 @@ const Projects: NextPage<ProjectPageProps> = ({
               { tabName: 'предыстория', tabContent: ZavodPrehistory },
               { tabName: 'технологии', tabContent: ZavodTechnologies },
             ]}
-            projectLink={'https://zavod.kambalin.ru'}
+            projectLink={'https://zavod.kambalin.space'}
             gitHubLink={'https://github.com/KambalaFish/SmartEnterprise'}
           />
           <ProjectCard

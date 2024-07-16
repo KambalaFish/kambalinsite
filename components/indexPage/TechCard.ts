@@ -9,6 +9,12 @@ import { SiStyledComponents } from '@react-icons/all-files/si/SiStyledComponents
 import { SiEslint } from '@react-icons/all-files/si/SiEslint';
 import { SiPrettier } from '@react-icons/all-files/si/SiPrettier';
 import { SiNginx } from '@react-icons/all-files/si/SiNginx';
+import { ReactQueryIcon } from '@public/ReactQueryIcon';
+import { SiWebpack } from '@react-icons/all-files/si/SiWebpack';
+import { ViteIcon } from '@public/ViteIcon';
+import { ReduxSagaIcon } from '@public/ReduxSagaIcon';
+import { FaSass } from '@react-icons/all-files/fa/FaSass';
+import { StylelintIcon } from '@public/StylelintIcon';
 
 const TechCard = styled.a`
   transition: 0.4s ease-in-out 0s;
@@ -22,19 +28,19 @@ const TechCard = styled.a`
 
 const techStack: { Icon: IconType; url: string; title: string }[] = [
   {
+    Icon: ViteIcon,
+    url: `https://vitejs.dev/`,
+    title: 'Vite',
+  },
+  {
+    Icon: SiWebpack,
+    url: `https://webpack.js.org/`,
+    title: 'Webpack',
+  },
+  {
     Icon: SiTypescript,
     url: 'https://www.typescriptlang.org/',
     title: 'typescript',
-  },
-  {
-    Icon: SiReact,
-    url: 'https://reactjs.org/',
-    title: 'react.js',
-  },
-  {
-    Icon: SiRedux,
-    url: 'https://redux.js.org/',
-    title: 'redux',
   },
   {
     Icon: SiNextDotJs,
@@ -42,9 +48,24 @@ const techStack: { Icon: IconType; url: string; title: string }[] = [
     title: 'next.js',
   },
   {
-    Icon: SiBabel,
-    url: 'https://babeljs.io/',
-    title: 'babel',
+    Icon: SiReact,
+    url: 'https://reactjs.org/',
+    title: 'react.js',
+  },
+  {
+    Icon: ReactQueryIcon,
+    url: 'https://tanstack.com/query/v3',
+    title: 'react-query',
+  },
+  {
+    Icon: SiRedux,
+    url: 'https://redux.js.org/',
+    title: 'redux',
+  },
+  {
+    Icon: ReduxSagaIcon,
+    url: 'https://redux-saga.js.org/',
+    title: 'redux-saga',
   },
   {
     Icon: SiStyledComponents,
@@ -52,9 +73,24 @@ const techStack: { Icon: IconType; url: string; title: string }[] = [
     title: 'styled-components',
   },
   {
+    Icon: FaSass,
+    url: 'https://sass-scss.ru/',
+    title: 'Sass',
+  },
+  {
     Icon: SiEslint,
     url: 'https://eslint.org/',
     title: 'eslint',
+  },
+  {
+    Icon: StylelintIcon,
+    url: 'https://stylelint.io/',
+    title: 'stylelint',
+  },
+  {
+    Icon: SiBabel,
+    url: 'https://babeljs.io/',
+    title: 'babel',
   },
   {
     Icon: SiPrettier,

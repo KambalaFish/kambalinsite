@@ -21,6 +21,7 @@
       "@components/bookmarksPage": ["components/bookmarksPage"],
       "@components/projectsPage": ["components/projectsPage"],
       "@components/projectsPage/*": ["components/projectsPage/*"],
+      "@public/*": ["public/*"],
       "@styles/*": ["styles/*"],
       "@hooks": ["hooks"],
       "@api": ["api"],

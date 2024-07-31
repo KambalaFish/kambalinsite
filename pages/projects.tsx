@@ -11,6 +11,9 @@ import {
   TusafinderDescription,
   TusafinderPrehistory,
   TusafinderTechnologies,
+  VitrinaDescription,
+  VitrinaOptimization,
+  VitrinaTechnologies,
 } from '@components/projectsPage';
 
 import * as fs from 'fs';
@@ -19,11 +22,13 @@ import path from 'path';
 interface ProjectPageProps {
   zavodScreenshotPaths: string[];
   tusafinderScreenshotPaths: string[];
+  vitrinaScreenshotPaths: string[];
 }
 
 const Projects: NextPage<ProjectPageProps> = ({
   zavodScreenshotPaths,
   tusafinderScreenshotPaths,
+  vitrinaScreenshotPaths,
 }) => {
   return (
     <>
@@ -43,6 +48,23 @@ const Projects: NextPage<ProjectPageProps> = ({
         </Container>
 
         <Container width={'100%'} rowGap={'4rem'}>
+          <ProjectCard
+            projectName={'Витрина'}
+            imagePaths={vitrinaScreenshotPaths}
+            tabs={[
+              {
+                tabName: 'описание',
+                tabContent: VitrinaDescription,
+              },
+              {
+                tabName: `оптимизации`,
+                tabContent: VitrinaOptimization,
+              },
+              { tabName: `технологии`, tabContent: VitrinaTechnologies },
+            ]}
+            projectLink={`https://vitrina.kambalin.space/`}
+            gitHubLink={'https://github.com/KambalaFish/vitrinaFrontend'}
+          />
           <ProjectCard
             projectName={'Завод'}
             imagePaths={zavodScreenshotPaths}
@@ -73,6 +95,7 @@ const Projects: NextPage<ProjectPageProps> = ({
 export function getStaticProps() {
   const zavodDir = path.join(process.cwd(), 'public', 'projects', 'zavod');
   const tusafinderDir = path.join(process.cwd(), 'public', 'projects', 'tusafinder');
+  const vitrinaDir = path.join(process.cwd(), 'public', 'projects', 'vitrina');
 
   const getFormattedImagePaths = (absoluteDirPath: string, relativeDirPath: string) => {
     return fs
@@ -85,9 +108,10 @@ export function getStaticProps() {
 
   const zavodScreenshotPaths = getFormattedImagePaths(zavodDir, '/projects/zavod/');
   const tusafinderScreenshotPaths = getFormattedImagePaths(tusafinderDir, '/projects/tusafinder/');
+  const vitrinaScreenshotPaths = getFormattedImagePaths(vitrinaDir, '/projects/vitrina/');
 
   return {
-    props: { zavodScreenshotPaths, tusafinderScreenshotPaths },
+    props: { zavodScreenshotPaths, tusafinderScreenshotPaths, vitrinaScreenshotPaths },
   };
 }
 

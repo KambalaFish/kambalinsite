@@ -6,3 +6,6 @@ export { ZavodTechnologies } from './zavodCard/ZavodTechnologies';
 export { TusafinderDescription } from './tusafinedCard/TusafinderDescription';
 export { TusafinderPrehistory } from './tusafinedCard/TusafinderPrehistory';
 export { TusafinderTechnologies } from './tusafinedCard/TusafinderTechnologies';
+export { VitrinaDescription } from './vitrinaCard/VitrinaDescription';
+export { VitrinaOptimization } from './vitrinaCard/VitrinaOptimization';
+export { VitrinaTechnologies } from './vitrinaCard/VitrinaTechnologies';

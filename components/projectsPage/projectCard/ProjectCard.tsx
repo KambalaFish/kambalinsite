@@ -6,14 +6,21 @@ import { ProjectLink } from './ProjectLink';
 import { VscGithubInverted } from '@react-icons/all-files/vsc/VscGithubInverted';
 import { minDeviceMedia } from '@styles/theme';
 import Image from 'next/future/image';
-import { TabWithSetIndex, TabWithoutSetIndex, isTabWithSetIndex } from './TabInterfaces';
+import {
+  TabWithSetIndex,
+  TabWithoutSetIndex,
+  isTabWithSetIndex,
+  TabWithoutImageIndexAndWithTabIndex,
+  isTabWithoutSetIndex,
+  isTabWithoutImageIndexAndWithTabIndex,
+} from './TabInterfaces';
 
 interface ProjectCardProps {
   projectName: string;
   imagePaths: string[];
   tabs: Array<{
     tabName: string;
-    tabContent: TabWithSetIndex | TabWithoutSetIndex;
+    tabContent: TabWithSetIndex | TabWithoutSetIndex | TabWithoutImageIndexAndWithTabIndex;
   }>;
   projectLink?: string;
   gitHubLink: string;
@@ -142,10 +149,10 @@ const ProjectCard = ({
         }
       `}
     >
-      {isTabWithSetIndex(TabContent) ? (
-        <TabContent setCurrentIndex={setCurImageIndex} />
-      ) : (
-        <TabContent />
+      {isTabWithSetIndex(TabContent) && <TabContent setCurrentIndex={setCurImageIndex} />}
+      {isTabWithoutSetIndex(TabContent) && <TabContent />}
+      {isTabWithoutImageIndexAndWithTabIndex(TabContent) && (
+        <TabContent setCurrentTab={setCurrentTab} />
       )}
     </Container>
   ));

@@ -1,5 +1,5 @@
 import { makeTabWithSetIndex } from '@components/projectsPage/projectCard/TabInterfaces';
-import { TabContentProps } from '@components/projectsPage/projectCard/TabInterfaces';
+import { SetImageIndexProp } from '@components/projectsPage/projectCard/TabInterfaces';
 import { useCallback } from 'react';
 import { Container } from '@components';
 import {
@@ -14,7 +14,7 @@ import {
 } from '@components/projectsPage/projectCard/ContentAreaTypography';
 
 const ZavodDescription = makeTabWithSetIndex(
-  ({ setCurrentIndex }: TabContentProps): React.ReactElement => {
+  ({ setCurrentIndex }: SetImageIndexProp): React.ReactElement => {
     // we can be sure in identity of setCurrentIndex as it is a function from useState, so we can omit it from dependency array
     const actionColumnSlide = useCallback(() => setCurrentIndex(5), []);
 
